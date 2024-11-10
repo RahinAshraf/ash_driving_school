@@ -13,6 +13,7 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponseForbidden
 
 
+
 # View to render abu.html
 def abu_view(request):
     return render(request, "abu.html")
