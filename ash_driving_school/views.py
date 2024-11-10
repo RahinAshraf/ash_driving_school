@@ -17,6 +17,8 @@ from django.http import HttpResponseForbidden
 def abu_view(request):
     return render(request, "abu.html")
 
+
+
 # Signup view
 def signup_view(request):
     if request.method == 'POST':
