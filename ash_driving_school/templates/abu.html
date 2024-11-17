@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ash's Driving School</title>
+    <title>Ashraf Driving School</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
@@ -90,6 +90,8 @@
             margin-top: 100px; /* Space for the fixed header */
             text-align: center;
             color: #333;
+                padding-left: 35px; /* Add left padding */
+
         }
         .main-header h1 {
             font-size: 2.5em;
@@ -99,6 +101,12 @@
             font-size: 1.2em;
             color: #666;
         }
+        #content {
+    padding-left: 40px; /* Add left padding to the main content */
+}
+
+
+
         .section {
             padding: 40px 20px;
             margin: 20px auto;
@@ -154,6 +162,7 @@
                 padding: 20px 10px; /* Less padding on smaller screens */
             }
         }
+
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -179,7 +188,7 @@
     </script>
 </head>
 <body>
-    <header class="top-bar">
+     <header class="top-bar">
         <div class="contact-header">
             <span>ENQUIRIES & BOOKINGS: 07958 316700</span>
         </div>
@@ -201,18 +210,18 @@
     </header>
     
     <header class="main-header">
-        <h1>Welcome to Ash's Driving School</h1>
+        <h1>Welcome to Ashraf Driving School</h1>
         <p>Your journey to becoming a confident driver starts here!</p>
-    </header>
+    </header> 
     
     <main id="content">
         <section id="home" class="section">
             <h2>Home</h2>
-            <p>Welcome to Ash's Driving School, where we offer top-notch driving lessons tailored to your needs. Whether you're a beginner or looking to brush up on your skills, we're here to help you become a confident and skilled driver.</p>
+            <p>Welcome to Ashraf Driving School, where we offer top-notch driving lessons tailored to your needs. Whether you're a beginner or looking to brush up on your skills, we're here to help you become a confident and skilled driver.</p>
             
             <h3>Why Choose Us?</h3>
             <ul>
-                <li>Experienced Instructor: Ash is a certified driving instructor with over 10 years of experience.</li>
+                <li>Experienced Instructor: Ashraf is an approved driving instructor with over many years of experience.</li>
                 <li>Flexible Scheduling: We offer lessons at times that suit you, including evenings and weekends.</li>
                 <li>Affordable Rates: Competitive pricing with no hidden fees.</li>
                 <li>Modern Vehicles: Learn to drive in well-maintained, comfortable vehicles.</li>
@@ -228,24 +237,38 @@
         </section>
 
         <section id="about" class="section">
-            <h2>About</h2>
-            <p>Ash's Driving School has been serving the local community for over a decade. Our mission is to provide high-quality driving instruction that is both informative and enjoyable. We are committed to helping each student achieve their driving goals and pass their driving test with confidence.</p>
+    <h2>About</h2>
+    <p>Ashraf's Driving School has been serving the local community for over a decade. Our mission is to provide high-quality driving instruction that is both informative and enjoyable. We are committed to helping each student achieve their driving goals and pass their driving test with confidence.</p>
 
-            <h3>Meet Ash</h3>
-            <p>Ash is a fully qualified and highly experienced driving instructor with a passion for teaching. Having helped hundreds of students pass their driving tests, Ash combines a thorough understanding of driving principles with a friendly and supportive teaching style.</p>
+    <h3>Meet Ashraf</h3>
+    <p>Ashraf is a fully qualified and highly experienced driving instructor with a passion for teaching. Having helped hundreds of students pass their driving tests, Ashraf combines a thorough understanding of driving principles with a friendly and supportive teaching style.</p>
 
-            <h3>Our Approach</h3>
-            <p>We believe in a personalized approach to driving instruction. Each lesson is tailored to your individual needs and learning pace. We use modern teaching techniques and practical exercises to ensure you gain the skills and confidence needed to drive safely and pass your driving test.</p>
-            
-            <h3>Our Vehicles</h3>
-            <p>Our fleet includes a range of modern, well-maintained vehicles equipped with dual controls for your safety. Whether you prefer a manual or automatic transmission, we have the right vehicle to suit your needs.</p>
-        </section>
+    <h3>Our Approach</h3>
+    <p>We believe in a personalized approach to driving instruction. Each lesson is tailored to your individual needs and learning pace. We use modern teaching techniques and practical exercises to ensure you gain the skills and confidence needed to drive safely and pass your driving test.</p>
+
+    <h3>Our Vehicles</h3>
+    <p>Our fleet includes a range of modern, well-maintained vehicles equipped with dual controls for your safety. Whether you prefer a manual or automatic transmission, we have the right vehicle to suit your needs.</p>
+
+
+<h3>Our Location</h3>
+    <p>We are based in St Albans, a beautiful city in Hertfordshire. Check out our location on the map below!</p>
+
+    <!-- Interactive Map -->
+    <div id="map" style="height: 400px; width: 100%; margin-top: 20px;"></div>
+
+<!-- Leaflet.js Script -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+</section>
+
         
         <section id="contact" class="section">
             <h2>Contact</h2>
             <div class="contact-info-card">
                 <h3>Phone</h3>
-                <p>07958 316700</p>
+                <p>For automatic lessons: 07958 316700</p>
+                <p>For manual lessons: 07534 639826</p>
             </div>
             <div class="contact-info-card">
                 <h3>Email</h3>
@@ -253,13 +276,37 @@
             </div>
             <div class="contact-info-card">
                 <h3>Instagram</h3>
-                <p>Follow us on Instagram: @AshDrivingSchool</p>
+                <p>Follow us on Instagram: <a href="https://www.instagram.com/ashraf.driving.school/profilecard/?igsh=YWJ1YWxraXlxYTlp" target="_blank" style="color: #ff0000; 
+            text-decoration: underline; font-weight: bold;">@ashraf.driving.school</a></p>
+                <p></p>
             </div>
         </section>
     </main>
     
     <footer>
         <p>&copy; 2024 Ash's Driving School. All rights reserved.</p>
+        <p>Developed by: <a href="https://www.linkedin.com/in/rahin-ashraf-130945224" target="_blank" style="color: #ffd700; 
+            text-decoration: underline; font-weight: bold;">@Rahin Ashraf</a></p>
     </footer>
+
+  <script>
+    // Initialize the map without attribution control
+    const map = L.map('map', {
+        attributionControl: false // Disable the attribution control
+    }).setView([51.752, -0.340], 11); // St Albans coordinates with zoom level
+
+    // Add OpenStreetMap tiles without attribution
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        // No attribution settings here
+    }).addTo(map);
+
+    // Add a marker at St Albans
+    const marker = L.marker([51.750, -0.340]).addTo(map)
+        .bindPopup("<b>We are based in St Albans</b>")
+        .openPopup();
+</script>
+
+
+
 </body>
 </html>

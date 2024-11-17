@@ -1,3 +1,6 @@
+{% load custom_filters %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -128,7 +131,27 @@
                     <h4 style="margin: 0;">{{ review.user.username }}</h4>
                 </div>
 
-                <p style="margin-bottom: 10px;"><strong>Rating:</strong> {{ review.rating }}/5</p>
+                {% comment %} <p style="margin-bottom: 10px;"><strong>Rating:</strong> {{ review.rating }}/5</p> {% endcomment %}
+
+                <p style="margin-bottom: 10px;"><strong>Rating:</strong>
+    <span style="color: #FFD700; font-size: 1.2em;">
+        <!-- Loop to display filled stars -->
+        {% for _ in review.rating|to_list %}
+            <i class="fas fa-star"></i>
+        {% endfor %}
+
+        <!-- Loop to display empty stars -->
+        {% for _ in 5|add:"-review.rating"|to_list %}
+            <i class="far fa-star"></i>
+        {% endfor %}
+    </span>
+</p>
+
+
+
+
+
+
                 <p><strong>Comment:</strong></p>
                 <p style="white-space: pre-wrap; margin-top: 5px;">{{ review.comment|linebreaksbr }}</p>
 

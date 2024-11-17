@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leave a Review</title>
+    <!-- Font Awesome for stars -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         /* General Styling */
         body {
@@ -15,6 +17,7 @@
         }
 
         .container {
+            position: relative; /* Make container relative for absolute positioning of the link */
             max-width: 500px;
             margin: 40px auto;
             padding: 30px;
@@ -46,7 +49,6 @@
             color: #333;
         }
 
-        /* Adjust margin between input boxes and labels if necessary */
         input[type="number"],
         textarea {
             width: 95%;
@@ -93,41 +95,63 @@
             margin-top: 5px;
         }
 
-        /* Add spacing between label and input */
+        /* Styling for the star rating system to center it */
+.rating {
+    direction: rtl;
+    display: block; /* Ensures the stars are treated as block elements */
+    text-align: center; /* Centers the stars */
+    margin: 0 auto; /* Centers the star elements horizontally */
+}
+
+
+        .rating input {
+            display: none;
+        }
+
+        .rating label {
+            color: #ccc;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .rating input:checked ~ label,
+        .rating input:hover ~ label {
+            color: #ff4757;
+        }
+
+        .rating label:hover,
+        .rating input:focus ~ label {
+            color: #ff4757;
+        }
+
+        .rating input:checked ~ label:hover {
+            color: #ff4757;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
         .form-group label {
             font-weight: 600;
-            margin-bottom: 10px; /* Adjust this value to control the spacing */
-            color: #333;
+            margin-bottom: 5px;
         }
 
-        .form-group input,
-        .form-group textarea {
-            border: 1px solid #e0e0e0;
-            background-color: #fafafa;
-        }
-
-        /* Responsiveness */
-        @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-            }
-
-            button {
-                font-size: 1rem;
-            }
+        /* Styling for 'Back to Reviews' link */
+        .back-link {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #FF0000;
+            text-decoration: none;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <div class="container" style="position: relative; padding: 30px;">
+    <div class="container">
         <!-- Link to go back to the reviews list -->
-        <a href="{% url 'reviews' %}" 
-           style="position: absolute; /* Absolute position inside the container */
-                  top: 20px; /* Distance from the top of the container */
-                  left: 20px; /* Distance from the left of the container */
-                  color: #FF0000;
-                  text-decoration: none;
-                  font-weight: bold;">
+        <a href="{% url 'reviews' %}" class="back-link">
             Back to Reviews
         </a>
 
@@ -136,8 +160,20 @@
             {% csrf_token %}
             
             <div class="form-group">
-                <label for="rating">Rating (1-5):</label>
-                {{ form.rating }}
+                <label for="rating">Rating (1-5):  </label>
+                <!-- Star Rating System -->
+                <div class="rating">
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5" title="5 stars">&#9733;</label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4" title="4 stars">&#9733;</label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3" title="3 stars">&#9733;</label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2" title="2 stars">&#9733;</label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1" title="1 star">&#9733;</label>
+                </div>
                 {% if form.rating.errors %}
                     <div class="error">
                         {% for error in form.rating.errors %}
@@ -165,7 +201,4 @@
         </form>
     </div>
 </body>
-
-
-
 </html>
