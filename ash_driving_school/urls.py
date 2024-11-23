@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from .views import abu_view, signup_view, reviews, leave_review, submit_review, custom_login_view, profile_view, delete_review
+from .views import abu_view, signup_view, reviews, leave_review, submit_review, custom_login_view, profile_view, delete_review, reviews_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),

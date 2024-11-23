@@ -1,6 +1,5 @@
 {% load custom_filters %}
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +13,7 @@
             background-color: #f0f0f0;
             margin: 0;
             padding: 20px;
-            position: relative; /* Allows positioning of child elements */
+            position: relative;
         }
         .container {
             max-width: 600px;
@@ -23,7 +22,7 @@
             background-color: white;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: relative; /* Set relative positioning for child elements */
+            position: relative;
         }
         h2 {
             text-align: center;
@@ -41,22 +40,17 @@
         .review p {
             margin: 5px 0;
         }
-
-        /* Back to Home link at the top-left of the container */
         .home-link {
-            position: absolute; /* Absolute position inside the container */
-            top: 20px; /* Distance from the top of the container */
-            left: 20px; /* Distance from the left of the container */
+            position: absolute;
+            top: 20px;
+            left: 20px;
             color: #FF0000;
             text-decoration: none;
             font-weight: bold;
         }
-
         .home-link:hover {
             text-decoration: underline;
         }
-
-        /* Leave Review link at the top-right of the container */
         .leave-review {
             position: absolute;
             top: 20px;
@@ -65,11 +59,9 @@
             text-decoration: none;
             font-weight: bold;
         }
-
         .leave-review:hover {
             text-decoration: underline;
         }
-
         .review-container {
             position: relative;
             margin-bottom: 20px;
@@ -78,13 +70,11 @@
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-
         .delete-button-form {
             position: absolute;
             top: 10px;
-            right: 10px; /* Changed from left to right */
+            right: 10px;
         }
-
         .delete-button {
             background-color: #FF0000;
             color: white;
@@ -93,69 +83,50 @@
             cursor: pointer;
             border-radius: 5px;
         }
-
         .delete-button:hover {
-            background-color: #cc0000; /* Darker red on hover */
+            background-color: #cc0000;
         }
     </style>
 </head>
 <body>
     <div class="container" style="position: relative; padding: 30px;">
-        <!-- Back to Home link at the top-left of the container -->
-        <a class="home-link" href="{% url 'abu' %}" 
-           style="position: absolute; top: 20px; left: 20px; color: #FF0000; text-decoration: none; font-weight: bold;">
+        <a class="home-link" href="{% url 'abu' %}">
             Back to Home
         </a>
-
-        <!-- Leave a Review link at the top-right of the container -->
-        <a class="leave-review" href="{% url 'leave_review' %}" 
-           style="position: absolute; top: 20px; right: 20px; color: #FF0000; text-decoration: none; font-weight: bold;">
+        <a class="leave-review" href="{% url 'leave_review' %}">
             Leave a Review
         </a>
 
         <h2>Reviews</h2>
         {% for review in reviews %}
-            <div class="review-container" style="position: relative; padding-bottom: 20px;">
+            <div class="review-container">
 
                 {% if review.user == request.user %}
-                    <!-- Delete button positioned in the top-right corner -->
                     <form action="{% url 'delete_review' review.id %}" method="post" class="delete-button-form">
                         {% csrf_token %}
                         <button type="submit" class="delete-button">Delete</button>
                     </form>
                 {% endif %}
 
-                <!-- Flex container for user icon, username -->
                 <div class="username-container" style="display: flex; align-items: center; margin-bottom: 10px;">
-                    <i class="fas fa-user" style="margin-right: 5px; color: #666;"></i> <!-- User icon -->
+                    <i class="fas fa-user" style="margin-right: 5px; color: #666;"></i>
                     <h4 style="margin: 0;">{{ review.user.username }}</h4>
                 </div>
 
-                {% comment %} <p style="margin-bottom: 10px;"><strong>Rating:</strong> {{ review.rating }}/5</p> {% endcomment %}
-
                 <p style="margin-bottom: 10px;"><strong>Rating:</strong>
-    <span style="color: #FFD700; font-size: 1.2em;">
-        <!-- Loop to display filled stars -->
-        {% for _ in review.rating|to_list %}
-            <i class="fas fa-star"></i>
-        {% endfor %}
-
-        <!-- Loop to display empty stars -->
-        {% for _ in 5|add:"-review.rating"|to_list %}
-            <i class="far fa-star"></i>
-        {% endfor %}
-    </span>
-</p>
-
-
-
-
-
+                    <span style="color: #FFD700; font-size: 1.2em;">
+                        {% for _ in review.rating|to_list %}
+                            <i class="fas fa-star"></i>
+                        {% endfor %}
+                        {% for _ in 5|add:"-review.rating"|to_list %}
+                            <i class="far fa-star"></i>
+                        {% endfor %}
+                    </span>
+                </p>
 
                 <p><strong>Comment:</strong></p>
                 <p style="white-space: pre-wrap; margin-top: 5px;">{{ review.comment|linebreaksbr }}</p>
 
-                <!-- Date positioned at the bottom-right of the review -->
                 <span style="position: absolute; bottom: 10px; right: 10px; font-size: 15px; color: #888;">
                     {{ review.created_at|date:"F Y" }}
                 </span>
@@ -165,7 +136,4 @@
         {% endfor %}
     </div>
 </body>
-
-
-
 </html>
