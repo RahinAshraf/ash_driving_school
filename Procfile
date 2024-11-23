@@ -1,0 +1,1 @@
+web gunicorn ash_driving_school.wsgi:application --log-file -

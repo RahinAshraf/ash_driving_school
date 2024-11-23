@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # Link to the user
     comment = models.TextField()  # The review text
@@ -11,4 +12,5 @@ class Review(models.Model):
         return f"{self.user.username} - {self.rating}/5"
 
 
-
+class NewModel(models.Model):
+    name = models.CharField(max_length=100)
