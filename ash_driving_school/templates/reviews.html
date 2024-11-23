@@ -90,27 +90,26 @@
 </head>
 <body>
     <div class="container" style="position: relative; padding: 30px;">
-        <a class="home-link" href="{% url 'abu' %}">
+        <a class="home-link" href="{% url 'abu' %}" style="text-decoration: none; font-weight: bold; color: #0056b3;">
             Back to Home
         </a>
-        <a class="leave-review" href="{% url 'leave_review' %}">
+        <a class="leave-review" href="{% url 'leave_review' %}" style="display: block; margin-top: 10px; text-decoration: none; font-weight: bold; color: #28a745;">
             Leave a Review
         </a>
 
         <h2>Reviews</h2>
         {% for review in reviews %}
-            <div class="review-container">
-
+            <div class="review-container" style="position: relative; border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; background-color: #f9f9f9; border-radius: 8px;">
                 {% if review.user == request.user %}
-                    <form action="{% url 'delete_review' review.id %}" method="post" class="delete-button-form">
+                    <form action="{% url 'delete_review' review.id %}" method="post" class="delete-button-form" style="position: absolute; top: 10px; right: 10px;">
                         {% csrf_token %}
-                        <button type="submit" class="delete-button">Delete</button>
+                        <button type="submit" class="delete-button" style="background-color: #dc3545; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px;">Delete</button>
                     </form>
                 {% endif %}
 
                 <div class="username-container" style="display: flex; align-items: center; margin-bottom: 10px;">
                     <i class="fas fa-user" style="margin-right: 5px; color: #666;"></i>
-                    <h4 style="margin: 0;">{{ review.user.username }}</h4>
+                    <h4 style="margin: 0; font-weight: bold; color: #333;">{{ review.user.username }}</h4>
                 </div>
 
                 <p style="margin-bottom: 10px;"><strong>Rating:</strong>
@@ -125,7 +124,7 @@
                 </p>
 
                 <p><strong>Comment:</strong></p>
-                <p style="white-space: pre-wrap; margin-top: 5px;">{{ review.comment|linebreaksbr }}</p>
+                <p style="white-space: pre-wrap; margin-top: 5px; color: #555;">{{ review.comment|linebreaksbr }}</p>
 
                 <span style="position: absolute; bottom: 10px; right: 10px; font-size: 15px; color: #888;">
                     {{ review.created_at|date:"F Y" }}
@@ -136,4 +135,5 @@
         {% endfor %}
     </div>
 </body>
+
 </html>
