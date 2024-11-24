@@ -134,6 +134,17 @@
         {% empty %}
             <p>No reviews yet.</p>
         {% endfor %}
+
+
+        <h1>Customer Reviews</h1>
+    {% for review in reviews %}
+        <div class="review">
+            <p class="user">{{ review.user }}</p>
+            <p class="rating">Rating: {{ review.rating }}⭐</p>
+            <p class="comment">{{ review.comment }}</p>
+            <p class="created_at">Posted on: {{ review.created_at }}</p>
+        </div>
+    {% endfor %}
     </div>
 </body>
 </html>
