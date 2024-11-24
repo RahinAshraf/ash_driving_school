@@ -185,13 +185,20 @@ def reviews_view(request):
         },
     ]
     
-    # Dynamic reviews from the database
-    dynamic_reviews = Review.objects.all().order_by('-created_at')
+    # # Dynamic reviews from the database
+    # dynamic_reviews = Review.objects.all().order_by('-created_at')
 
-    # Combine both dynamic and static reviews
-    all_reviews = dynamic_reviews + static_reviews
+    # # Combine both dynamic and static reviews
+    # all_reviews = dynamic_reviews + static_reviews
 
-    return render(request, 'reviews.html', {'reviews': all_reviews})
+    # return render(request, 'reviews.html', {'reviews': all_reviews})
+
+    queryset_reviews = Review.objects.all()
+
+    # Combine QuerySet and static reviews
+    combined_reviews = list(queryset_reviews) + static_reviews
+
+    return render(request, 'reviews.html', {'reviews': combined_reviews})
 
 
 
