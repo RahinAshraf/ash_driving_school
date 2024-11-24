@@ -193,7 +193,7 @@ def reviews_view(request):
 
     # return render(request, 'reviews.html', {'reviews': all_reviews})
 
-    queryset_reviews = Review.objects.all()
+    queryset_reviews = Review.objects.all().order_by('-created_at')
 
     # Combine QuerySet and static reviews
     combined_reviews = list(queryset_reviews) + static_reviews
