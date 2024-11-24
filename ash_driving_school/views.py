@@ -189,7 +189,7 @@ def reviews_view(request):
     dynamic_reviews = Review.objects.all().order_by('-created_at')
 
     # Combine both dynamic and static reviews
-    all_reviews = dynamic_reviews | static_reviews
+    all_reviews = dynamic_reviews + static_reviews
 
     return render(request, 'reviews.html', {'reviews': all_reviews})
 
