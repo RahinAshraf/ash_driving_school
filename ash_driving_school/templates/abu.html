@@ -152,7 +152,6 @@
             width: 100%;
             margin-top: 20px;
         }
-        /* Responsive Design */
         @media (max-width: 768px) {
             nav {
                 flex-wrap: wrap;
@@ -161,16 +160,30 @@
 
             .main-header h1 {
                 font-size: 2rem;
+                max-width: 100vw; /* Ensure the width adjusts to the phone's viewport */
+                word-wrap: break-word; /* Prevent long words from overflowing */
             }
 
             .main-header p {
                 font-size: 1rem;
+                max-width: 100vw; /* Adjust paragraph width to fit the screen */
+                word-wrap: break-word;
             }
 
             .section {
                 padding: 15px;
+                max-width: 100vw; /* Ensure the section adjusts to the phone's width */
+                box-sizing: border-box; /* Include padding in the element's width calculation */
+            }
+
+            body {
+                padding: 0;
+                margin: 0;
+                width: 100vw; /* Match body width to viewport */
+                overflow-x: hidden; /* Prevent horizontal scrolling */
             }
         }
+
         .contact-info-card ul li {
              margin-bottom: 20px; /* Adjust the value for more or less space */
         }
