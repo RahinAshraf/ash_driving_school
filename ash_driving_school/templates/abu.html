@@ -7,179 +7,151 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
-            scroll-behavior: smooth; /* Enable smooth scrolling */
-            overflow-x: hidden;
-        }
-        .top-bar {
-            background-color: #FF0000;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            z-index: 1000;
-        }
-        .contact-header {
-            padding: 0.5em 0;
-            text-align: center;
-            font-size: 1.2em; /* Keep original size */
-            font-weight: bold;
-        }
-        nav {
-            background-color: #FF0000;
-            display: flex;
-            justify-content: center; /* Center contents in the navbar */
-            align-items: center;
-            padding: 0.5em 0;
-            white-space: nowrap; /* Prevent wrapping of the items */
-            overflow-x: auto; /* Allow horizontal scrolling if items exceed width */
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 0 0.5em; /* Reduced padding */
-            display: inline-block; /* Ensure consistent height */
-            font-size: 0.75em; /* Reduce size by 50% (originally assumed to be 1em) */
-        }
-        .nav-button {
-            padding: 5px 10px; /* Reduced padding */
-            background-color: #C8102E;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-left: 10px; /* Space between button and link */
-            transition: background-color 0.3s ease;
-            display: inline-block; /* Ensure consistent height */
-            font-size: 0.75em; /* Reduce size by 50% */
-        }
-        .nav-button:hover {
-            background-color: #A80F2D;
-        }
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: white;
-            min-width: 160px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        .main-header {
-            margin-top: 100px; /* Space for the fixed header */
-            text-align: center;
+            background-color: #f9f9f9;
             color: #333;
-                padding-left: 35px; /* Add left padding */
-
+            line-height: 1.6;
+            scroll-behavior: smooth;
         }
+
+        .top-bar {
+            background: #C8102E;
+            color: white;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-header {
+            text-align: center;
+            padding: 10px;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            background: #C8102E;
+            padding: 10px 0;
+        }
+
+        nav a, .nav-button {
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover, .nav-button:hover {
+            background: #A80F2D;
+        }
+
+        .main-header {
+            margin-top: 120px;
+            text-align: center;
+            padding: 30px;
+            background: #FFD700;
+            color: #333;
+        }
+
         .main-header h1 {
-            font-size: 2.5em;
+            font-size: 2.5rem;
             margin: 0.5em 0;
+            font-weight: bold;
         }
+
         .main-header p {
-            font-size: 1.2em;
-            color: #666;
+            font-size: 1.2rem;
         }
+
         #content {
-    padding-left: 40px; /* Add left padding to the main content */
-}
-
-
+            padding: 20px;
+        }
 
         .section {
-            padding: 40px 20px;
-            margin: 20px auto;
-            max-width: 800px;
+            margin: 20px 0;
+            padding: 20px;
             background: white;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            position: relative; /* Needed for the pseudo-element */
         }
+
         .section h2 {
-            color: #FF0000;
-            border-bottom: 2px solid #C8102E;
+            color: #C8102E;
+            border-bottom: 2px solid #FFD700;
             padding-bottom: 10px;
-            margin-top: 0; /* Remove default margin */
         }
+
         .section ul {
-            list-style-type: square;
-            margin-left: 20px;
+            margin: 20px 0;
+            padding-left: 20px;
+            list-style: square;
         }
+
         .contact-info-card {
-            background-color: #f9f9f9;
+            margin: 20px 0;
             padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
+            background: #f3f3f3;
+            border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #FF0000;
+            background: #C8102E;
             color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+            text-align: center;
+            padding: 15px;
             margin-top: 20px;
         }
-        @media (max-width: 600px) {
-            nav a {
-                padding: 0 0.5em; /* Adjust padding for smaller screens */
-                font-size: 0.75em; /* Maintain reduced size */
-            }
-            .nav-button {
-                padding: 5px 10px; /* Smaller padding for buttons */
-                font-size: 0.75em; /* Maintain reduced size */
-            }
-            .main-header h1 {
-                font-size: 2em; /* Responsive font size */
-            }
-            .main-header p {
-                font-size: 1em; /* Responsive font size */
-            }
-            .section {
-                padding: 20px 10px; /* Less padding on smaller screens */
-            }
+
+        footer a {
+            color: #FFD700;
+            text-decoration: underline;
+            font-weight: bold;
         }
 
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .main-header h1 {
+                font-size: 2rem;
+            }
+
+            .main-header p {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 15px;
+            }
+        }
     </style>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Smooth scroll to the top of each section when a tab is clicked
-            const links = document.querySelectorAll('nav a');
-            const navHeight = document.querySelector('.top-bar').offsetHeight; // Get the height of the navigation bar
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('nav a');
+            const headerHeight = document.querySelector('.top-bar').offsetHeight;
 
-            links.forEach(link => {
-                link.addEventListener('click', function(event) {
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    if (targetSection) {
-                        event.preventDefault(); // Prevent default anchor click behavior
-                        const offsetTop = targetSection.offsetTop - navHeight - 3; // Adjust scroll position with additional offset
+            navLinks.forEach(link => {
+                link.addEventListener('click', e => {
+                    e.preventDefault();
+                    const target = document.querySelector(link.getAttribute('href'));
+                    if (target) {
                         window.scrollTo({
-                            top: offsetTop,
-                            behavior: 'smooth' // Smooth scroll effect
+                            top: target.offsetTop - headerHeight - 10,
+                            behavior: 'smooth'
                         });
                     }
                 });
@@ -188,37 +160,32 @@
     </script>
 </head>
 <body>
-     <header class="top-bar">
-        <div class="contact-header">
-            <span>ENQUIRIES & BOOKINGS: 07958 316700</span>
-        </div>
+    <header class="top-bar">
+        <div class="contact-header">ENQUIRIES & BOOKINGS: 07958 316700</div>
         <nav>
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
             <a href="{% url 'reviews' %}">Reviews</a>
-
             {% if user.is_authenticated %}
-                <button class="nav-button" onclick="location.href='{% url 'profile' %}'">My profile</button>
+                <button class="nav-button" onclick="location.href='{% url 'profile' %}'">My Profile</button>
                 <button class="nav-button" onclick="location.href='{% url 'logout' %}'">Logout</button>
-
             {% else %}
                 <button class="nav-button" onclick="location.href='{% url 'signup' %}'">Sign Up</button>
                 <button class="nav-button" onclick="location.href='{% url 'login' %}'">Login</button>
             {% endif %}
         </nav>
     </header>
-    
+
     <header class="main-header">
-        <h1>Welcome to Ashraf Driving School fff</h1>
+        <h1>Welcome to Ashraf Driving School</h1>
         <p>Your journey to becoming a confident driver starts here!</p>
-    </header> 
-    
+    </header>
+
     <main id="content">
         <section id="home" class="section">
             <h2>Home</h2>
-            <p>Welcome to Ashraf Driving School, where we offer top-notch driving lessons tailored to your needs. Whether you're a beginner or looking to brush up on your skills, we're here to help you become a confident and skilled driver.</p>
-            
+            <p>Welcome to Ashraf Driving School, where we offer top-notch driving lessons tailored to your needs.</p>
             <h3>Why Choose Us?</h3>
             <ul>
                 <li>Experienced Instructor: Ashraf is an approved driving instructor with over many years of experience.</li>
@@ -226,7 +193,6 @@
                 <li>Affordable Rates: Competitive pricing with no hidden fees.</li>
                 <li>Modern Vehicles: Learn to drive in well-maintained, comfortable vehicles.</li>
             </ul>
-
             <h3>What Our Students Say</h3>
             <blockquote>
                 <p>"Ashraf was an excellent instructor! Patient, knowledgeable, and made me feel confident behind the wheel. Highly recommend!" - Sarah J.</p>
@@ -237,32 +203,19 @@
         </section>
 
         <section id="about" class="section">
-    <h2>About</h2>
-    <p>Ashraf's Driving School has been serving the local community for many years. Our mission is to provide high-quality driving instruction that is both informative and enjoyable. We are committed to helping each student achieve their driving goals and pass their driving test with confidence.</p>
+            <h2>About</h2>
+            <p>Ashraf's Driving School has been serving the local community for many years. Our mission is to provide high-quality driving instruction that is both informative and enjoyable. We are committed to helping each student achieve their driving goals and pass their driving test with confidence.</p>
+            <h3>Meet Ashraf</h3>
+            <p>Ashraf is a fully qualified and highly experienced driving instructor with a passion for teaching. Having helped hundreds of students pass their driving tests, Ashraf combines a thorough understanding of driving principles with a friendly and supportive teaching style.</p>
+            <h3>Our Approach</h3>
+            <p>We believe in a personalised approach to driving instruction. Each lesson is tailored to your individual needs and learning pace. We use modern teaching techniques and practical exercises to ensure you gain the skills and confidence needed to drive safely and pass your driving test.</p>
+            <h3>Our Vehicles</h3>
+            <p>Our fleet includes a range of modern, well-maintained vehicles equipped with dual controls for your safety. Whether you prefer a manual or automatic transmission, we have the right vehicle to suit your needs.</p>
+            <h3>Our Location</h3>
+            <p>We are based in St Albans &amp; Hatfield, two beautiful towns in Hertfordshire. Check out our locations on the map below!</p>
+            <div id="map" style="height: 400px; width: 100%; margin-top: 20px;"></div>
+        </section>
 
-    <h3>Meet Ashraf</h3>
-    <p>Ashraf is a fully qualified and highly experienced driving instructor with a passion for teaching. Having helped hundreds of students pass their driving tests, Ashraf combines a thorough understanding of driving principles with a friendly and supportive teaching style.</p>
-
-    <h3>Our Approach</h3>
-    <p>We believe in a personalised approach to driving instruction. Each lesson is tailored to your individual needs and learning pace. We use modern teaching techniques and practical exercises to ensure you gain the skills and confidence needed to drive safely and pass your driving test.</p>
-
-    <h3>Our Vehicles</h3>
-    <p>Our fleet includes a range of modern, well-maintained vehicles equipped with dual controls for your safety. Whether you prefer a manual or automatic transmission, we have the right vehicle to suit your needs.</p>
-
-
-<h3>Our Location</h3>
-    <p>We are based in St Albans &amp; Hatfield, two beautiful towns in Hertfordshire. Check out our locations on the map below!</p>
-
-    <!-- Interactive Map -->
-    <div id="map" style="height: 400px; width: 100%; margin-top: 20px;"></div>
-
-<!-- Leaflet.js Script -->
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-
-</section>
-
-        
         <section id="contact" class="section">
             <h2>Contact</h2>
             <div class="contact-info-card">
@@ -276,40 +229,23 @@
             </div>
             <div class="contact-info-card">
                 <h3>Instagram</h3>
-                <p>Follow us on Instagram: <a href="https://www.instagram.com/ashraf.driving.school/profilecard/?igsh=YWJ1YWxraXlxYTlp" target="_blank" style="color: #ff0000; 
-            text-decoration: underline; font-weight: bold;">@ashraf.driving.school</a></p>
-                <p></p>
+                <p>Follow us on Instagram: <a href="https://www.instagram.com/ashraf.driving.school/profilecard/?igsh=YWJ1YWxraXlxYTlp" target="_blank" style="color: #C8102E; text-decoration: underline; font-weight: bold;">@ashraf.driving.school</a></p>
             </div>
         </section>
     </main>
-    
+
     <footer>
-        <p>Developed by: <a href="https://www.linkedin.com/in/rahin-ashraf-130945224" target="_blank" style="color: #ffd700; 
-            text-decoration: underline; font-weight: bold;">@Rahin Ashraf</a></p>
+        <p>Developed by: <a href="https://www.linkedin.com/in/rahin-ashraf-130945224" target="_blank">@Rahin Ashraf</a></p>
     </footer>
 
-  <script>
-    // Initialize the map without attribution control
-    const map = L.map('map', {
-        attributionControl: false // Disable the attribution control
-    }).setView([51.7565, -0.2815], 11); // St Albans coordinates with zoom level
-
-    // Add OpenStreetMap tiles without attribution
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        // No attribution settings here
-    }).addTo(map);
-
-    // Add a marker at St Albans
-    const markerStAlbans = L.marker([51.750, -0.340]).addTo(map)
-        .bindPopup("<b>We are based in St Albans</b>")
-
-    // Add a marker at Hatfield
-    const markerHatfield = L.marker([51.761, -0.223]).addTo(map)
-        .bindPopup("<b>We are based in Hatfield</b>")
-
-</script>
-
-
-
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script>
+        const map = L.map('map').setView([51.7565, -0.2815], 11);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        L.marker([51.7565, -0.2815]).addTo(map).bindPopup('Ashraf Driving School').openPopup();
+    </script>
 </body>
 </html>
