@@ -184,14 +184,6 @@ def reviews_view(request):
             'created_at': '16th Oct 2023',
         },
     ]
-    
-    # # Dynamic reviews from the database
-    # dynamic_reviews = Review.objects.all().order_by('-created_at')
-
-    # # Combine both dynamic and static reviews
-    # all_reviews = dynamic_reviews + static_reviews
-
-    # return render(request, 'reviews.html', {'reviews': all_reviews})
 
     queryset_reviews = Review.objects.all().order_by('-created_at')
 
