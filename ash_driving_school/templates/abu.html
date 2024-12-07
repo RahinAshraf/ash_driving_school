@@ -143,24 +143,25 @@
             width: 100%;
             margin-top: 20px;
         }
-        @media (max-width: 600px) {
-            nav a {
-                padding: 0 0.5em; /* Adjust padding for smaller screens */
-                font-size: 0.75em; /* Maintain reduced size */
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                gap: 10px;
             }
-            .nav-button {
-                padding: 5px 10px; /* Smaller padding for buttons */
-                font-size: 0.75em; /* Maintain reduced size */
-            }
+
             .main-header h1 {
-                font-size: 2em; /* Responsive font size */
+                font-size: 2rem;
             }
+
             .main-header p {
-                font-size: 1em; /* Responsive font size */
+                font-size: 1rem;
             }
+
             .section {
-                padding: 20px 10px; /* Less padding on smaller screens */
+                padding: 15px;
             }
+        }
         }
 
     </style>
