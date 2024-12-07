@@ -1,167 +1,209 @@
-{% load custom_filters %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reviews</title>
+    <title>Ashraf Driving School</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
             background-color: #f0f0f0;
-            margin: 0;
-            padding: 20px;
-            position: relative;
+            scroll-behavior: smooth; /* Enable smooth scrolling */
+            overflow-x: hidden;
         }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-        h2 {
-            text-align: center;
-            color: #FF0000;
-        }
-        .review {
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        .review h4 {
-            margin: 0;
-        }
-        .review p {
-            margin: 5px 0;
-        }
-        .home-link {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            color: #FF0000;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .home-link:hover {
-            text-decoration: underline;
-        }
-        .leave-review {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: #FF0000;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .leave-review:hover {
-            text-decoration: underline;
-        }
-        .review-container {
-            position: relative;
-            margin-bottom: 20px;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .delete-button-form {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-        .delete-button {
+        .top-bar {
             background-color: #FF0000;
             color: white;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
         }
-        .delete-button:hover {
-            background-color: #cc0000;
+        .contact-header {
+            padding: 0.5em 0;
+            text-align: center;
+            font-size: 1.2em; /* Keep original size */
+            font-weight: bold;
+        }
+        nav {
+            background-color: #FF0000;
+            display: flex;
+            justify-content: center; /* Center contents in the navbar */
+            align-items: center;
+            padding: 0.5em 0;
+            white-space: nowrap; /* Prevent wrapping of the items */
+            overflow-x: auto; /* Allow horizontal scrolling if items exceed width */
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0 0.5em; /* Reduced padding */
+            display: inline-block; /* Ensure consistent height */
+            font-size: 0.75em; /* Reduce size by 50% (originally assumed to be 1em) */
+        }
+        .nav-button {
+            padding: 5px 10px; /* Reduced padding */
+            background-color: #C8102E;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px; /* Space between button and link */
+            transition: background-color 0.3s ease;
+            display: inline-block; /* Ensure consistent height */
+            font-size: 0.75em; /* Reduce size by 50% */
+        }
+        .nav-button:hover {
+            background-color: #A80F2D;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .main-header {
+            margin-top: 100px; /* Space for the fixed header */
+            text-align: center;
+            color: #333;
+            padding-left: 35px; /* Add left padding */
+        }
+        .main-header h1 {
+            font-size: 2.5em;
+            margin: 0.5em 0;
+        }
+        .main-header p {
+            font-size: 1.2em;
+            color: #666;
+        }
+        #content {
+            padding-left: 40px; /* Add left padding to the main content */
+        }
+        .section {
+            padding: 40px 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative; /* Needed for the pseudo-element */
+        }
+        .section h2 {
+            color: #FF0000;
+            border-bottom: 2px solid #C8102E;
+            padding-bottom: 10px;
+            margin-top: 0; /* Remove default margin */
+        }
+        .section ul {
+            list-style-type: square;
+            margin-left: 20px;
+        }
+        .contact-info-card {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #FF0000;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 20px;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .main-header h1 {
+                font-size: 2rem;
+            }
+            .main-header p {
+                font-size: 1rem;
+            }
+            .section {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container" style="position: relative; padding: 30px;">
-        <a class="home-link" href="{% url 'abu' %}">
-            Back to Home
-        </a>
-        <a class="leave-review" href="{% url 'leave_review' %}">
-            Leave a Review
-        </a>
-
-        <h2>Reviews</h2>
-        {% for review in reviews %}
-            <div class="review-container">
-
-                {% if review.user == request.user %}
-                    <form action="{% url 'delete_review' review.id %}" method="post" class="delete-button-form">
-                        {% csrf_token %}
-                        <button type="submit" class="delete-button">Delete</button>
-                    </form>
+    <div id="wrapper">
+        <header class="top-bar">
+            <div class="contact-header">
+                <span>ENQUIRIES & BOOKINGS: 07958 316700</span>
+            </div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a href="{% url 'reviews' %}">Reviews</a>
+                {% if user.is_authenticated %}
+                    <button class="nav-button" onclick="location.href='{% url 'profile' %}'">My profile</button>
+                    <button class="nav-button" onclick="location.href='{% url 'logout' %}'">Logout</button>
+                {% else %}
+                    <button class="nav-button" onclick="location.href='{% url 'signup' %}'">Sign Up</button>
+                    <button class="nav-button" onclick="location.href='{% url 'login' %}'">Login</button>
                 {% endif %}
+            </nav>
+        </header>
 
-                <div class="username-container" style="display: flex; align-items: center; margin-bottom: 10px;">
-                    <i class="fas fa-user" style="margin-right: 5px; color: #666;"></i>
-                    <h4 style="margin: 0;">{{ review.user.username }}</h4>
-                </div>
+        <header class="main-header">
+            <h1>Welcome to Ashraf Driving School</h1>
+            <p>Your journey to becoming a confident driver starts here!</p>
+        </header> 
 
-                <p style="margin-bottom: 10px;"><strong>Rating:</strong>
-                    <span style="color: #FFD700; font-size: 1.2em;">
-                        {% for _ in review.rating|to_list %}
-                            <i class="fas fa-star"></i>
-                        {% endfor %}
-                        {% for _ in 5|add:"-review.rating"|to_list %}
-                            <i class="far fa-star"></i>
-                        {% endfor %}
-                    </span>
-                </p>
+        <main id="content">
+            <section id="home" class="section">
+                <h2>Home</h2>
+                <p>Welcome to Ashraf Driving School...</p>
+                <!-- Content continues here -->
+            </section>
 
-                <p><strong>Comment:</strong></p>
-                <p style="white-space: pre-wrap; margin-top: 5px;">{{ review.comment|linebreaksbr }}</p>
+            <section id="about" class="section">
+                <h2>About</h2>
+                <p>About section content here...</p>
+            </section>
 
-                <span style="position: absolute; bottom: 10px; right: 10px; font-size: 15px; color: #888;">
-                    {{ review.created_at|date:"F Y" }}
-                </span>
-            </div>
-        {% empty %}
-            <p>No reviews yet.</p>
-        {% endfor %}
+            <section id="contact" class="section">
+                <h2>Contact</h2>
+                <p>Contact information here...</p>
+            </section>
+        </main>
 
-        <h1>Customer Reviews</h1>
-        {% for review in reviews %}
-            <div class="review-container">
-                <div class="username-container" style="display: flex; align-items: center; margin-bottom: 10px;">
-                    <i class="fas fa-user" style="margin-right: 5px; color: #666;"></i>
-                    <h4 style="margin: 0;">{{ review.user }}</h4>
-                </div>
-
-                <p style="margin-bottom: 10px;"><strong>Rating:</strong>
-                    <span style="color: #FFD700; font-size: 1.2em;">
-                        {% for _ in review.rating|to_list %}
-                            <i class="fas fa-star"></i>
-                        {% endfor %}
-                        {% for _ in 5|add:"-review.rating"|to_list %}
-                            <i class="far fa-star"></i>
-                        {% endfor %}
-                    </span>
-                </p>
-
-                <p><strong>Comment:</strong></p>
-                <p style="white-space: pre-wrap; margin-top: 5px;">{{ review.comment|linebreaksbr }}</p>
-
-                <span style="position: absolute; bottom: 10px; right: 10px; font-size: 15px; color: #888;">
-                    {{ review.created_at|date:"F Y" }}
-                </span>
-            </div>
-        {% endfor %}
+        <footer>
+            <p>Developed by: <a href="https://www.linkedin.com/in/rahin-ashraf-130945224" target="_blank">Rahin Ashraf</a></p>
+        </footer>
     </div>
 </body>
 </html>
