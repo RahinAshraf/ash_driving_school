@@ -135,7 +135,7 @@
             <p>No reviews yet.</p>
         {% endfor %}
 
-        <h1>Customer Reviews</h1>
+        {% comment %} <h1>Customer Reviews</h1>
         {% for review in reviews %}
             <div class="review-container">
                 <div class="username-container" style="display: flex; align-items: center; margin-bottom: 10px;">
@@ -161,7 +161,7 @@
                     {{ review.created_at|date:"F Y" }}
                 </span>
             </div>
-        {% endfor %}
+        {% endfor %} {% endcomment %}
     </div>
 </body>
 </html>
