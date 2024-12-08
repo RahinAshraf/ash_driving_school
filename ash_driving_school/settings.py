@@ -128,6 +128,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "staticfiles"]
+STATIC_ROOT = BASE_DIR / "static"  # Folder where collectstatic will gather all static files
+
 
 
 # Default primary key field type
