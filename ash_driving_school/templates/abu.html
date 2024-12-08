@@ -90,8 +90,7 @@
 
         .carousel-container {
             width: 100%;
-            max-width: 800px;
-            margin: 50px auto;
+            height: 100vh; /* Full screen height */
             position: relative;
             overflow: hidden;
         }
@@ -99,17 +98,23 @@
         .carousel {
             display: flex;
             transition: transform 0.5s ease-in-out;
+            height: 100%; /* Ensure carousel fills the height */
         }
 
         .card {
-            width: 100%;
+            width: 100vw; /* Make each card take full screen width */
             flex-shrink: 0;
+            height: 100%; /* Ensure the card takes the full height of the carousel */
             background-color: #fff;
             border: 1px solid #ddd;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin: 10px;
+            margin: 0; /* Remove margin for full screen */
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .carousel img {
@@ -142,6 +147,9 @@
         .dots-container {
             text-align: center;
             padding: 10px;
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
         }
 
         .dot {
