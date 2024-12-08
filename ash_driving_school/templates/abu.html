@@ -53,31 +53,31 @@
     }
 }
 
-/* Position buttons at the left-center of the full-screen background image */
+/* Position buttons at the left-center of the screen */
 .buttons-container {
-    position: absolute;
-    top: 50%; /* Centers the buttons vertically */
-    left: 20px; /* Distance from the left */
-    transform: translateY(-50%); /* Vertically center the buttons */
-    z-index: 10;
+    position: fixed; /* Fixed positioning to keep buttons in the same place on the screen */
+    top: 50%; /* Centers the buttons vertically relative to the viewport */
+    left: 20px; /* Distance from the left edge of the viewport */
+    transform: translateY(-50%); /* Ensures vertical centering */
+    z-index: 10; /* Places the buttons above other content */
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Increased gap for better spacing between buttons */
-    opacity: 0; /* Initially hide buttons */
-    animation: showButtons 2s forwards; /* Animation for showing buttons */
+    gap: 15px; /* Spacing between the buttons */
+    opacity: 1; /* Make the buttons visible immediately (remove animations if needed) */
 }
 
-/* Buttons animation */
+/* Optional: Add smooth fade-in animation for buttons */
 @keyframes showButtons {
     0% {
         opacity: 0;
-        transform: translateX(-30px); /* Buttons start offscreen */
+        transform: translateX(-30px); /* Start slightly off-screen to the left */
     }
     100% {
         opacity: 1;
-        transform: translateX(0); /* Buttons end up in their final position */
+        transform: translateX(0); /* Slide into place */
     }
 }
+
 
 .buttons-container button {
     background-color: #444;
