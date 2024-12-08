@@ -92,12 +92,13 @@
 <body>
 
     <div class="container">
-        <button onclick="location.href='{% url 'profile' %}'">Home</button>
-        <button onclick="location.href='{% url 'profile' %}'">About</button>
-        <button onclick="location.href='{% url 'profile' %}'">Reviews</button>
 
         <!-- Buttons at the bottom left -->
         <div class="buttons-container">
+            <button onclick="location.href='{% url 'profile' %}'">Home</button>
+            <button onclick="location.href='{% url 'profile' %}'">About</button>
+            <button onclick="location.href='{% url 'profile' %}'">Reviews</button>
+
             {% if user.is_authenticated %}
                 <button onclick="location.href='{% url 'profile' %}'">My Profile</button>
                 <button onclick="location.href='{% url 'logout' %}'">Logout</button>
