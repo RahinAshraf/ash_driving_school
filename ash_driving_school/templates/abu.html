@@ -11,7 +11,6 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden;
         }
 
         .full-screen-image {
@@ -27,9 +26,10 @@
             text-align: center;
         }
 
+        /* Additional space below image */
         .container {
-            height: 100%; /* Ensures the image stays at the top, and the content is below */
             position: relative;
+            min-height: 100vh; /* Ensures content below image is visible */
         }
     </style>
 </head>
