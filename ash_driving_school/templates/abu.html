@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +36,7 @@
 <body>
     <div class="container">
         <!-- Full-screen image -->
-        <img src="your-image.jpg" alt="Full Screen Image" class="full-screen-image">
+        <img src="{% static 'background-car.png' %}" alt="Full Screen Image" class="full-screen-image">
 
         <!-- Content underneath the image -->
         <div class="content">
