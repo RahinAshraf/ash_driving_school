@@ -5,238 +5,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Inside a Card</title>
+    <title>Full Screen Image</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        body, html {
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            height: 100%;
+            overflow: hidden; /* Prevents scrolling */
         }
-        .card {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            width: 90%;
-            overflow: auto;
-            max-height: 90vh;
-        }
-        header, main, footer {
-            margin-bottom: 20px;
-        }
-        header {
-            text-align: center;
-        }
-        .contact-info-card {
-            background-color: #f9f9f9;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        nav {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        nav a {
-            color: #FF0000;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 10px;
-        }
-        .section {
-            padding: 10px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        blockquote {
-            margin: 10px 0;
-            padding-left: 20px;
-            border-left: 4px solid #ff0000;
-            color: #555;
-        }
-        blockquote span {
-            font-weight: bold;
-        }
-        footer {
-            text-align: center;
-            color: #666;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        ul li {
-            margin-bottom: 10px;
-        }
-        #map {
-            height: 300px;
+        
+        .full-screen-image {
             width: 100%;
-            margin-top: 20px;
-        }
-        /* Image Banner */
-        .image-banner {
-            width: 100%;  /* Ensures the image banner takes up the full width of the parent container */
-            overflow: hidden;  /* Hides any part of the image that overflows beyond the container */
-        }
-        .image-banner img {
-            width: 100%;  /* Ensures the image takes up the full width of the container */
-            height: auto;  /* Maintains the aspect ratio of the image */
-            object-fit: cover;  /* Makes sure the image covers the container without stretching */
+            height: 100%;
+            object-fit: cover; /* Ensures the image covers the entire screen */
+            display: block; /* Removes any default inline spacing */
         }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const links = document.querySelectorAll('nav a');
-            const card = document.querySelector('.card');
-
-            links.forEach(link => {
-                link.addEventListener('click', function (event) {
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetSection = document.getElementById(targetId);
-
-                    if (targetSection) {
-                        event.preventDefault();
-                        card.scrollTop = targetSection.offsetTop - card.offsetTop;
-                    }
-                });
-            });
-        });
-    </script>
 </head>
 <body>
-    <div class="card">
-         <header class="top-bar">
-        <div class="contact-header">
-            <span>ENQUIRIES & BOOKINGS: 07958 316700</span>
-        </div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-            <a href="{% url 'reviews' %}">Reviews</a>
-
-            {% if user.is_authenticated %}
-                <button class="nav-button" onclick="location.href='{% url 'profile' %}'">My profile</button>
-                <button class="nav-button" onclick="location.href='{% url 'logout' %}'">Logout</button>
-
-            {% else %}
-                <button class="nav-button" onclick="location.href='{% url 'signup' %}'">Sign Up</button>
-                <button class="nav-button" onclick="location.href='{% url 'login' %}'">Login</button>
-            {% endif %}
-        </nav>
-    </header>
-
-    <!-- Image Banner -->
-        <div class="image-banner">
-            <img src="{% static 'background-car.png' %}" alt="Driving School Car">
-        </div>
-    
-    <header class="main-header">
-        <h1>Welcome to Ashraf Driving School fff</h1>
-        <p>Your journey to becoming a confident driver starts here!</p>
-    </header> 
-    
-    <main id="content">
-        <section id="home" class="section">
-            <h2>Home</h2>
-            <p>Welcome to Ashraf Driving School, where we offer top-notch driving lessons tailored to your needs. Whether you're a beginner or looking to brush up on your skills, we're here to help you become a confident and skilled driver.</p>
-            
-            <h3>Why Choose Us?</h3>
-            <ul>
-                <li>Experienced Instructor: Ashraf is an approved driving instructor with over many years of experience.</li>
-                <li>Flexible Scheduling: We offer lessons at times that suit you, including evenings and weekends.</li>
-                <li>Affordable Rates: Competitive pricing with no hidden fees.</li>
-                <li>Modern Vehicles: Learn to drive in well-maintained, comfortable vehicles.</li>
-            </ul>
-
-            <h3>What Our Students Say</h3>
-            <blockquote>
-                <p>"Ashraf was an excellent instructor! Patient, knowledgeable, and made me feel confident behind the wheel. Highly recommend!" - Sarah J.</p>
-            </blockquote>
-            <blockquote>
-                <p>"Great driving school with flexible scheduling and affordable rates. I passed my test on the first try!" - Mark T.</p>
-            </blockquote>
-        </section>
-
-        <section id="about" class="section">
-    <h2>About</h2>
-    <p>Ashraf's Driving School has been serving the local community for many years. Our mission is to provide high-quality driving instruction that is both informative and enjoyable. We are committed to helping each student achieve their driving goals and pass their driving test with confidence.</p>
-
-    <h3>Meet Ashraf</h3>
-    <p>Ashraf is a fully qualified and highly experienced driving instructor with a passion for teaching. Having helped hundreds of students pass their driving tests, Ashraf combines a thorough understanding of driving principles with a friendly and supportive teaching style.</p>
-
-    <h3>Our Approach</h3>
-    <p>We believe in a personalised approach to driving instruction. Each lesson is tailored to your individual needs and learning pace. We use modern teaching techniques and practical exercises to ensure you gain the skills and confidence needed to drive safely and pass your driving test.</p>
-
-    <h3>Our Vehicles</h3>
-    <p>Our fleet includes a range of modern, well-maintained vehicles equipped with dual controls for your safety. Whether you prefer a manual or automatic transmission, we have the right vehicle to suit your needs.</p>
-
-
-<h3>Our Location</h3>
-    <p>We are based in St Albans &amp; Hatfield, two beautiful towns in Hertfordshire. Check out our locations on the map below!</p>
-
-    <!-- Interactive Map -->
-    <div id="map" style="height: 400px; width: 100%; margin-top: 20px;"></div>
-
-<!-- Leaflet.js Script -->
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-
-</section>
-
-        
-        <section id="contact" class="section">
-            <h2>Contact</h2>
-            <div class="contact-info-card">
-                <h3>Phone</h3>
-                <p>For automatic lessons: 07958 316700</p>
-                <p>For manual lessons: 07534 639826</p>
-            </div>
-            <div class="contact-info-card">
-                <h3>Email</h3>
-                <p>mr.rumon@hotmail.co.uk</p>
-            </div>
-            <div class="contact-info-card">
-                <h3>Instagram</h3>
-                <p>Follow us on Instagram: <a href="https://www.instagram.com/ashraf.driving.school/profilecard/?igsh=YWJ1YWxraXlxYTlp" target="_blank" style="color: #ff0000; 
-            text-decoration: underline; font-weight: bold;">@ashraf.driving.school</a></p>
-                <p></p>
-            </div>
-        </section>
-    </main>
-    
-    <footer>
-        <p>Developed by: <a href="https://www.linkedin.com/in/rahin-ashraf-130945224" target="_blank" style="color: #ffd700; 
-            text-decoration: underline; font-weight: bold;">@Rahin Ashraf</a></p>
-    </footer>
-
-  <script>
-    // Initialize the map without attribution control
-    const map = L.map('map', {
-        attributionControl: false // Disable the attribution control
-    }).setView([51.7565, -0.2815], 11); // St Albans coordinates with zoom level
-
-    // Add OpenStreetMap tiles without attribution
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        // No attribution settings here
-    }).addTo(map);
-
-    // Add a marker at St Albans
-    const markerStAlbans = L.marker([51.750, -0.340]).addTo(map)
-        .bindPopup("<b>We are based in St Albans</b>")
-
-    // Add a marker at Hatfield
-    const markerHatfield = L.marker([51.761, -0.223]).addTo(map)
-        .bindPopup("<b>We are based in Hatfield</b>")
-
-</script>
-    </div>
+    <img src="{% static 'background-car.png' %}" alt="Full Screen Image" class="full-screen-image">
 </body>
 </html>
