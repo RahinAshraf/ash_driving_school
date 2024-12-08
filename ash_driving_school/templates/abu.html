@@ -19,15 +19,19 @@
             height: 100vh; /* Viewport height to fill the screen */
             object-fit: cover;
             display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1; /* Ensures the image stays behind other content */
         }
 
         .content {
             padding: 20px;
             background-color: white;
             text-align: center;
+            z-index: 10; /* Ensure content stays on top */
         }
 
-        /* Additional space below image */
         .container {
             position: relative;
             min-height: 100vh; /* Ensures content below image is visible */
@@ -37,7 +41,8 @@
         .logo {
             position: absolute;
             top: 20px; /* Distance from the top of the page */
-            right: 20px; /* Distance from the right of the page */
+            left: 50%;
+            transform: translateX(-50%); /* Centers the logo horizontally */
             z-index: 10; /* Ensures the logo stays on top */
             width: 25vw; /* Adjusts the logo size based on viewport width */
             height: auto; /* Maintains aspect ratio */
@@ -48,15 +53,15 @@
             .logo {
                 width: 50vw; /* Adjust logo size to 50% of the viewport width on small screens */
                 top: 10px; /* Reduced top margin for phones */
-                right: 10px; /* Reduced right margin for phones */
             }
         }
 
-        /* Position buttons at the bottom left of the screen */
+        /* Position buttons at the center-left of the background image */
         .buttons-container {
             position: absolute;
-            bottom: 20px; /* Distance from the bottom */
+            top: 50%; /* Centers the buttons vertically */
             left: 20px; /* Distance from the left */
+            transform: translateY(-50%); /* Vertically center the buttons */
             z-index: 10;
             display: flex;
             flex-direction: column;
@@ -85,14 +90,13 @@
             }
         }
 
-
     </style>
 </head>
 <body>
 
     <div class="container">
 
-        <!-- Buttons at the bottom left -->
+        <!-- Buttons in the center-left of the screen -->
         <div class="buttons-container">
             {% if user.is_authenticated %}
                 <button onclick="location.href='{% url 'profile' %}'">My Profile</button>
@@ -115,5 +119,6 @@
             <p>This is some content that appears below the full screen image.</p>
         </div>
     </div>
+
 </body>
 </html>
