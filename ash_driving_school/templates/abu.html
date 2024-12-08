@@ -80,6 +80,16 @@
             width: 100%;
             margin-top: 20px;
         }
+        /* Image Banner */
+        .image-banner {
+            width: 100%;  /* Ensures the image banner takes up the full width of the parent container */
+            overflow: hidden;  /* Hides any part of the image that overflows beyond the container */
+        }
+        .image-banner img {
+            width: 100%;  /* Ensures the image takes up the full width of the container */
+            height: auto;  /* Maintains the aspect ratio of the image */
+            object-fit: cover;  /* Makes sure the image covers the container without stretching */
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
