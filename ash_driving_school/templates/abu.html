@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World Card</title>
+    <title>Page Inside a Card</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -13,32 +13,137 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
         }
         .card {
             background-color: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 90%;
+            overflow: auto;
+            max-height: 90vh;
+        }
+        header, main, footer {
+            margin-bottom: 20px;
+        }
+        header {
             text-align: center;
-            max-width: 300px;
         }
-        .card h1 {
-            font-size: 1.5em;
-            color: #333;
-            margin: 0;
+        .contact-info-card {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        .card p {
+        nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        nav a {
+            color: #FF0000;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+        .section {
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        blockquote {
+            margin: 10px 0;
+            padding-left: 20px;
+            border-left: 4px solid #ff0000;
+            color: #555;
+        }
+        blockquote span {
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
             color: #666;
-            font-size: 1em;
-            margin-top: 10px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        #map {
+            height: 300px;
+            width: 100%;
+            margin-top: 20px;
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('nav a');
+            const card = document.querySelector('.card');
+
+            links.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection) {
+                        event.preventDefault();
+                        card.scrollTop = targetSection.offsetTop - card.offsetTop;
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="card">
-        <h1>Hello World</h1>
-        <p>Welcome to this simple card example.</p>
+        <header>
+            <div class="contact-header">
+                <span>ENQUIRIES & BOOKINGS: 07958 316700</span>
+            </div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a href="#reviews">Reviews</a>
+            </nav>
+            <h1>Welcome to Ashraf Driving School</h1>
+            <p>Your journey to becoming a confident driver starts here!</p>
+        </header>
+        <main>
+            <section id="home" class="section">
+                <h2>Home</h2>
+                <p>Welcome to Ashraf Driving School, where we offer top-notch driving lessons tailored to your needs. Whether you're a beginner or looking to brush up on your skills, we're here to help you become a confident and skilled driver.</p>
+                <h3>Why Choose Us?</h3>
+                <ul>
+                    <li><b>Experienced Instructor:</b> Ashraf is an approved driving instructor with many years of experience.</li>
+                    <li><b>Flexible Scheduling:</b> We offer lessons at times that suit you, including evenings and weekends.</li>
+                    <li><b>Affordable Rates:</b> Competitive pricing with no hidden fees.</li>
+                    <li><b>Modern Vehicles:</b> Learn to drive in well-maintained, comfortable vehicles.</li>
+                </ul>
+            </section>
+            <section id="about" class="section">
+                <h2>About</h2>
+                <p>Ashraf's Driving School has been serving the local community for many years. Our mission is to provide high-quality driving instruction that is both informative and enjoyable. We are committed to helping each student achieve their driving goals and pass their driving test with confidence.</p>
+            </section>
+            <section id="contact" class="section">
+                <h2>Contact</h2>
+                <div class="contact-info-card">
+                    <h3>Phone</h3>
+                    <ul>
+                        <li>07958 316700</li>
+                        <li>07534 639826</li>
+                    </ul>
+                </div>
+                <div id="map"></div>
+            </section>
+        </main>
+        <footer>
+            <p>Developed by Rahin Ashraf</p>
+        </footer>
     </div>
 </body>
 </html>
