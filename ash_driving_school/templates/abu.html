@@ -115,9 +115,9 @@
 
         <!-- Buttons at the bottom left -->
         <div class="buttons-container">
-            <button href="#home">Home</button>
-            <button href="#about">About</button>
-            <button href="{% url 'reviews' %}">Reviews</button>
+            <button onclick="location.href='#home'">Home</button>
+            <button onclick="location.href='#about'">About</button>
+            <button onclick="location.href='{% url 'reviews' %}'">Reviews</button>
 
             {% if user.is_authenticated %}
                 <button onclick="location.href='{% url 'profile' %}'">My Profile</button>
