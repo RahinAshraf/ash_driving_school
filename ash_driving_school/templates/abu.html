@@ -11,6 +11,7 @@
             margin: 0;
             padding: 0;
             height: 100%;
+            font-family: Arial, sans-serif;
         }
 
         .full-screen-image {
@@ -31,11 +32,23 @@
             position: relative;
             min-height: 100vh; /* Ensures content below image is visible */
         }
+
+        /* Logo styling */
+        .logo {
+            position: absolute;
+            top: 20px; /* Distance from the top of the page */
+            left: 50%;
+            transform: translateX(-50%); /* Centers the logo horizontally */
+            z-index: 10; /* Ensures the logo stays on top */
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Full-screen image -->
+        <!-- Logo image at top center -->
+        <img src="{% static 'logo.jpg' %}" alt="Logo" class="logo">
+
+        <!-- Full-screen background image -->
         <img src="{% static 'background-car.png' %}" alt="Full Screen Image" class="full-screen-image">
 
         <!-- Content underneath the image -->
