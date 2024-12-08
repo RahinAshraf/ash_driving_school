@@ -53,7 +53,7 @@
             }
         }
 
-       /* Position buttons at the center-left of the background image */
+        /* Position buttons at the center-left of the background image */
         .buttons-container {
             position: absolute;
             top: 50%; /* Centers the buttons vertically */
@@ -63,20 +63,6 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
-            opacity: 0; /* Initially hide buttons */
-            animation: showButtons 2s forwards; /* Animation for showing buttons */
-        }
-
-        /* Buttons animation */
-        @keyframes showButtons {
-            0% {
-                opacity: 0;
-                transform: translateX(-30px); /* Buttons start offscreen */
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0); /* Buttons end up in their final position */
-            }
         }
 
         .buttons-container button {
@@ -88,32 +74,6 @@
             cursor: pointer;
             font-size: 16px;
             width: 150px; /* Fixed width */
-            animation: buttonFadeIn 0.5s ease forwards;
-        }
-
-        /* Staggered animation for buttons */
-        .buttons-container button:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        .buttons-container button:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-
-        .buttons-container button:nth-child(3) {
-            animation-delay: 1s;
-        }
-
-        .buttons-container button:nth-child(4) {
-            animation-delay: 1.5s;
-        }
-
-        .buttons-container button:nth-child(5) {
-            animation-delay: 2s;
-        }
-
-        .buttons-container button:nth-child(6) {
-            animation-delay: 2.5s;
         }
 
         .buttons-container button:hover {
