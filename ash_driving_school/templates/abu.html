@@ -88,6 +88,26 @@
 
 
     </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('nav a');
+            const card = document.querySelector('.card');
+
+            links.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection) {
+                        event.preventDefault();
+                        card.scrollTop = targetSection.offsetTop - card.offsetTop;
+                    }
+                });
+            });
+        });
+    </script>
+
 </head>
 <body>
 
@@ -95,9 +115,9 @@
 
         <!-- Buttons at the bottom left -->
         <div class="buttons-container">
-            <button onclick="location.href='{% url 'profile' %}'">Home</button>
-            <button onclick="location.href='{% url 'profile' %}'">About</button>
-            <button onclick="location.href='{% url 'profile' %}'">Reviews</button>
+            <button href="#home">Home</button>
+            <button href="#about">About</button>
+            <button href="{% url 'reviews' %}">Reviews</button>
 
             {% if user.is_authenticated %}
                 <button onclick="location.href='{% url 'profile' %}'">My Profile</button>
@@ -120,5 +140,75 @@
             <p>This is some content that appears below the full screen image.</p>
         </div>
     </div>
+
+     <main id="content">
+        <section id="home" class="section">
+            <h2>Home</h2>
+            <p>Welcome to Ashraf Driving School, where we offer top-notch driving lessons tailored to your needs. Whether you're a beginner or looking to brush up on your skills, we're here to help you become a confident and skilled driver.</p>
+            
+            <h3>Why Choose Us?</h3>
+            <ul>
+                <li>Experienced Instructor: Ashraf is an approved driving instructor with over many years of experience.</li>
+                <li>Flexible Scheduling: We offer lessons at times that suit you, including evenings and weekends.</li>
+                <li>Affordable Rates: Competitive pricing with no hidden fees.</li>
+                <li>Modern Vehicles: Learn to drive in well-maintained, comfortable vehicles.</li>
+            </ul>
+
+            <h3>What Our Students Say</h3>
+            <blockquote>
+                <p>"Ashraf was an excellent instructor! Patient, knowledgeable, and made me feel confident behind the wheel. Highly recommend!" - Sarah J.</p>
+            </blockquote>
+            <blockquote>
+                <p>"Great driving school with flexible scheduling and affordable rates. I passed my test on the first try!" - Mark T.</p>
+            </blockquote>
+        </section>
+
+        <section id="about" class="section">
+    <h2>About</h2>
+    <p>Ashraf's Driving School has been serving the local community for many years. Our mission is to provide high-quality driving instruction that is both informative and enjoyable. We are committed to helping each student achieve their driving goals and pass their driving test with confidence.</p>
+
+    <h3>Meet Ashraf</h3>
+    <p>Ashraf is a fully qualified and highly experienced driving instructor with a passion for teaching. Having helped hundreds of students pass their driving tests, Ashraf combines a thorough understanding of driving principles with a friendly and supportive teaching style.</p>
+
+    <h3>Our Approach</h3>
+    <p>We believe in a personalised approach to driving instruction. Each lesson is tailored to your individual needs and learning pace. We use modern teaching techniques and practical exercises to ensure you gain the skills and confidence needed to drive safely and pass your driving test.</p>
+
+    <h3>Our Vehicles</h3>
+    <p>Our fleet includes a range of modern, well-maintained vehicles equipped with dual controls for your safety. Whether you prefer a manual or automatic transmission, we have the right vehicle to suit your needs.</p>
+
+
+<h3>Our Location</h3>
+    <p>We are based in St Albans &amp; Hatfield, two beautiful towns in Hertfordshire. Check out our locations on the map below!</p>
+
+    <!-- Interactive Map -->
+    <div id="map" style="height: 400px; width: 100%; margin-top: 20px;"></div>
+
+<!-- Leaflet.js Script -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+</section>
+
+        
+        <section id="contact" class="section">
+            <h2>Contact</h2>
+            <div class="contact-info-card">
+                <h3>Phone</h3>
+                <p>For automatic lessons: 07958 316700</p>
+                <p>For manual lessons: 07534 639826</p>
+            </div>
+            <div class="contact-info-card">
+                <h3>Email</h3>
+                <p>mr.rumon@hotmail.co.uk</p>
+            </div>
+            <div class="contact-info-card">
+                <h3>Instagram</h3>
+                <p>Follow us on Instagram: <a href="https://www.instagram.com/ashraf.driving.school/profilecard/?igsh=YWJ1YWxraXlxYTlp" target="_blank" style="color: #ff0000; 
+            text-decoration: underline; font-weight: bold;">@ashraf.driving.school</a></p>
+                <p></p>
+            </div>
+        </section>
+    </main>
+
 </body>
 </html>
