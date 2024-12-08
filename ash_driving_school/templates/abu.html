@@ -5,135 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Inside a Card</title>
     <style>
-        .card {
-                background-color: white;
-                padding: 20px;
-                border-radius: 8px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                max-width: 800px;
-                width: 90%;
-                overflow: auto;
-                max-height: 90vh;
-        }
-         body {
+        body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
-            scroll-behavior: smooth; /* Enable smooth scrolling */
-            overflow-x: hidden;
-        }
-        .top-bar {
-            background-color: #FF0000;
-            color: white;
             display: flex;
-            flex-direction: column;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            z-index: 1000;
-        }
-        .contact-header {
-            padding: 0.5em 0;
-            text-align: center;
-            font-size: 1.2em; /* Keep original size */
-            font-weight: bold;
-        }
-        nav {
-            background-color: #FF0000;
-            display: flex;
-            justify-content: center; /* Center contents in the navbar */
+            justify-content: center;
             align-items: center;
-            padding: 0.5em 0;
-            white-space: nowrap; /* Prevent wrapping of the items */
-            overflow-x: auto; /* Allow horizontal scrolling if items exceed width */
+            min-height: 100vh;
         }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 0 0.5em; /* Reduced padding */
-            display: inline-block; /* Ensure consistent height */
-            font-size: 0.75em; /* Reduce size by 50% (originally assumed to be 1em) */
-        }
-        .nav-button {
-            padding: 5px 10px; /* Reduced padding */
-            background-color: #C8102E;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-left: 10px; /* Space between button and link */
-            transition: background-color 0.3s ease;
-            display: inline-block; /* Ensure consistent height */
-            font-size: 0.75em; /* Reduce size by 50% */
-        }
-        .nav-button:hover {
-            background-color: #A80F2D;
-        }
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
+        .card {
             background-color: white;
-            min-width: 160px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        .main-header {
-            margin-top: 100px; /* Space for the fixed header */
-            text-align: center;
-            color: #333;
-                padding-left: 35px; /* Add left padding */
-
-        }
-        .main-header h1 {
-            font-size: 2.5em;
-            margin: 0.5em 0;
-        }
-        .main-header p {
-            font-size: 1.2em;
-            color: #666;
-        }
-        #content {
-    padding-left: 40px; /* Add left padding to the main content */
-}
-
-
-
-        .section {
-            padding: 40px 20px;
-            margin: 20px auto;
-            max-width: 800px;
-            background: white;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            position: relative; /* Needed for the pseudo-element */
+            max-width: 800px;
+            width: 90%;
+            overflow: auto;
+            max-height: 90vh;
         }
-        .section h2 {
-            color: #FF0000;
-            border-bottom: 2px solid #C8102E;
-            padding-bottom: 10px;
-            margin-top: 0; /* Remove default margin */
+        header, main, footer {
+            margin-bottom: 20px;
         }
-        .section ul {
-            list-style-type: square;
-            margin-left: 20px;
+        header {
+            text-align: center;
         }
         .contact-info-card {
             background-color: #f9f9f9;
@@ -142,36 +38,46 @@
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+        nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        nav a {
+            color: #FF0000;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+        .section {
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        blockquote {
+            margin: 10px 0;
+            padding-left: 20px;
+            border-left: 4px solid #ff0000;
+            color: #555;
+        }
+        blockquote span {
+            font-weight: bold;
+        }
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: #FF0000;
-            color: white;
-            position: relative;
-            bottom: 0;
+            color: #666;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        #map {
+            height: 300px;
             width: 100%;
             margin-top: 20px;
         }
-        @media (max-width: 600px) {
-            nav a {
-                padding: 0 0.5em; /* Adjust padding for smaller screens */
-                font-size: 0.75em; /* Maintain reduced size */
-            }
-            .nav-button {
-                padding: 5px 10px; /* Smaller padding for buttons */
-                font-size: 0.75em; /* Maintain reduced size */
-            }
-            .main-header h1 {
-                font-size: 2em; /* Responsive font size */
-            }
-            .main-header p {
-                font-size: 1em; /* Responsive font size */
-            }
-            .section {
-                padding: 20px 10px; /* Less padding on smaller screens */
-            }
-        }
-       
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
