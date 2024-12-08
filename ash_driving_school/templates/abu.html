@@ -1,5 +1,3 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,164 +7,203 @@
 
     <style>
         body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: Arial, sans-serif;
-        }
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
 
-        .full-screen-image {
-            width: 100%;
-            height: 100vh; /* Viewport height to fill the screen */
-            object-fit: cover;
-            display: block;
-        }
+.full-screen-image {
+    width: 100%;
+    height: 100vh; /* Viewport height to fill the screen */
+    object-fit: cover;
+    display: block;
+}
 
-        .content {
-            padding: 20px;
-            background-color: white;
-            text-align: center;
-        }
+.content {
+    padding: 20px;
+    background-color: white;
+    text-align: center;
+}
 
-        /* Additional space below image */
-        .container {
-            position: relative;
-            min-height: 100vh; /* Ensures content below image is visible */
-        }
+/* Container positioning */
+.container {
+    position: relative;
+    min-height: 100vh; /* Ensures content below image is visible */
+}
 
-        /* Logo styling */
-        .logo {
-            position: absolute;
-            top: 20px; /* Distance from the top of the page */
-            right: 20px; /* Distance from the right of the page */
-            z-index: 10; /* Ensures the logo stays on top */
-            width: 25vw; /* Adjusts the logo size based on viewport width */
-            height: auto; /* Maintains aspect ratio */
-        }
+/* Logo styling */
+.logo {
+    position: absolute;
+    top: 20px; /* Distance from the top of the page */
+    right: 20px; /* Distance from the right of the page */
+    z-index: 10; /* Ensures the logo stays on top */
+    width: 25vw; /* Adjusts the logo size based on viewport width */
+    height: auto; /* Maintains aspect ratio */
+}
 
-        /* Media query for small screens (phones) */
-        @media (max-width: 600px) {
-            .logo {
-                width: 50vw; /* Adjust logo size to 50% of the viewport width on small screens */
-                top: 10px; /* Reduced top margin for phones */
-                right: 10px; /* Reduced right margin for phones */
-            }
-        }
+/* Media query for small screens (phones) */
+@media (max-width: 600px) {
+    .logo {
+        width: 50vw; /* Adjust logo size to 50% of the viewport width on small screens */
+        top: 10px; /* Reduced top margin for phones */
+        right: 10px; /* Reduced right margin for phones */
+    }
+}
 
-        /* Position buttons at the center-left of the background image */
-        .buttons-container {
-            position: absolute;
-            top: 50%; /* Centers the buttons vertically */
-            left: 20px; /* Distance from the left */
-            transform: translateY(-50%); /* Vertically center the buttons */
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+/* Position buttons at the left-center of the full-screen background image */
+.buttons-container {
+    position: absolute;
+    top: 50%; /* Centers the buttons vertically */
+    left: 20px; /* Distance from the left */
+    transform: translateY(-50%); /* Vertically center the buttons */
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Increased gap for better spacing between buttons */
+    opacity: 0; /* Initially hide buttons */
+    animation: showButtons 2s forwards; /* Animation for showing buttons */
+}
 
-        .buttons-container button {
-            background-color: #444;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            width: 150px; /* Fixed width */
-        }
+/* Buttons animation */
+@keyframes showButtons {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px); /* Buttons start offscreen */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* Buttons end up in their final position */
+    }
+}
 
-        .buttons-container button:hover {
-            background-color: #555;
-        }
+.buttons-container button {
+    background-color: #444;
+    color: white;
+    padding: 12px 25px; /* Increased padding for better button size */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 160px; /* Fixed width */
+    animation: buttonFadeIn 0.5s ease forwards;
+}
 
-        /* Adjust buttons for smaller screens */
-        @media (max-width: 600px) {
-            .buttons-container button {
-                width: 120px; /* Adjust button width for smaller screens */
-            }
-        }
+/* Staggered animation for buttons */
+.buttons-container button:nth-child(1) {
+    animation-delay: 0s;
+}
 
+.buttons-container button:nth-child(2) {
+    animation-delay: 0.5s;
+}
 
-        .carousel-container {
-            width: 100%;
-            height: 100vh; /* Full screen height */
-            position: relative;
-            overflow: hidden;
-        }
+.buttons-container button:nth-child(3) {
+    animation-delay: 1s;
+}
 
-        .carousel {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            height: 100%; /* Ensure carousel fills the height */
-        }
+.buttons-container button:nth-child(4) {
+    animation-delay: 1.5s;
+}
 
-        .card {
-            width: 100vw; /* Make each card take full screen width */
-            flex-shrink: 0;
-            height: 100%; /* Ensure the card takes the full height of the carousel */
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin: 0; /* Remove margin for full screen */
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+.buttons-container button:nth-child(5) {
+    animation-delay: 2s;
+}
 
-        .carousel img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
+.buttons-container button:nth-child(6) {
+    animation-delay: 2.5s;
+}
 
-        .prev, .next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 15px;
-            font-size: 20px;
-            border: none;
-            cursor: pointer;
-            z-index: 10;
-        }
+.buttons-container button:hover {
+    background-color: #555;
+}
 
-        .prev {
-            left: 10px;
-        }
+/* Adjust buttons for smaller screens */
+@media (max-width: 600px) {
+    .buttons-container button {
+        width: 130px; /* Adjust button width for smaller screens */
+        font-size: 14px; /* Smaller font size for small screens */
+    }
+}
 
-        .next {
-            right: 10px;
-        }
+/* Carousel container and other styles (unchanged) */
+.carousel-container {
+    width: 100%;
+    height: 100vh; /* Full screen height */
+    position: relative;
+    overflow: hidden;
+}
 
-        .dots-container {
-            text-align: center;
-            padding: 10px;
-            position: absolute;
-            bottom: 10px;
-            width: 100%;
-        }
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%; /* Ensure carousel fills the height */
+}
 
-        .dot {
-            display: inline-block;
-            width: 15px;
-            height: 15px;
-            margin: 0 5px;
-            background-color: #bbb;
-            border-radius: 50%;
-            cursor: pointer;
-        }
+.card {
+    width: 100vw; /* Make each card take full screen width */
+    flex-shrink: 0;
+    height: 100%; /* Ensure the card takes the full height of the carousel */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 0; /* Remove margin for full screen */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-        .active {
-            background-color: #717171;
-        }
-        
+.carousel img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
 
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 15px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.dots-container {
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+.dot {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.active {
+    background-color: #717171;
+}
 
     </style>
 
@@ -222,144 +259,52 @@
         </div>
     </div>
 
-     <main id="content">
+    <main id="content">
         <section id="home" class="section">
-    <div class="carousel-container">
-        <div class="carousel">
-            <!-- Card 1: Home Introduction -->
-            <div class="card">
-                <h2>Home</h2>
-                <p>Welcome to Ashraf Driving School, where we offer top-notch driving lessons tailored to your needs. Whether you're a beginner or looking to brush up on your skills, we're here to help you become a confident and skilled driver.</p>
-            </div>
+            <div class="carousel-container">
+                <div class="carousel">
+                    <!-- Card 1: Home Introduction -->
+                    <div class="card">
+                        <h2>Home</h2>
+                        <p>Welcome to Ashraf Driving School, where we offer top-notch driving lessons tailored to your needs. Whether you're a beginner or looking to brush up on your skills, we're here to help you become a confident and skilled driver.</p>
+                    </div>
 
-            <!-- Card 2: Why Choose Us -->
-            <div class="card">
-                <h3>Why Choose Us?</h3>
-                <ul>
-                    <li>Experienced Instructor: Ashraf is an approved driving instructor with many years of experience.</li>
-                    <li>Flexible Scheduling: We offer lessons at times that suit you, including evenings and weekends.</li>
-                    <li>Affordable Rates: Competitive pricing with no hidden fees.</li>
-                    <li>Modern Vehicles: Learn to drive in well-maintained, comfortable vehicles.</li>
-                </ul>
-            </div>
+                    <!-- Card 2: Why Choose Us -->
+                    <div class="card">
+                        <h3>Why Choose Us?</h3>
+                        <ul>
+                            <li>Experienced Instructor: Ashraf is an approved driving instructor with many years of experience.</li>
+                            <li>Flexible Scheduling: We offer lessons at times that suit you, including evenings and weekends.</li>
+                            <li>Affordable Rates: Competitive pricing with no hidden fees.</li>
+                            <li>Modern Vehicles: Learn to drive in well-maintained, comfortable vehicles.</li>
+                        </ul>
+                    </div>
 
-            <!-- Card 3: What Our Students Say -->
-            <div class="card">
-                <h3>What Our Students Say</h3>
-                <blockquote>
-                    <p>"Ashraf was an excellent instructor! Patient, knowledgeable, and made me feel confident behind the wheel. Highly recommend!" - Sarah J.</p>
-                </blockquote>
-                <blockquote>
-                    <p>"Great driving school with flexible scheduling and affordable rates. I passed my test on the first try!" - Mark T.</p>
-                </blockquote>
-            </div>
-        </div>
+                    <!-- Card 3: What Our Students Say -->
+                    <div class="card">
+                        <h3>What Our Students Say</h3>
+                        <blockquote>
+                            <p>"Ashraf was an excellent instructor! Patient, knowledgeable, and made me feel confident behind the wheel. Highly recommend!" - Sarah J.</p>
+                        </blockquote>
+                        <blockquote>
+                            <p>"Great driving school with flexible scheduling and affordable rates. I passed my test on the first try!" - Mark T.</p>
+                        </blockquote>
+                    </div>
+                </div>
 
-        <!-- Navigation Arrows -->
-        <button class="prev">&#10094;</button>
-        <button class="next">&#10095;</button>
+                <!-- Navigation Arrows -->
+                <button class="prev">&#10094;</button>
+                <button class="next">&#10095;</button>
 
-        <!-- Dots Navigation -->
-        <div class="dots-container">
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-        </div>
-    </div>
-</section>
-
-
-        <section id="about" class="section">
-    <h2>About</h2>
-    <p>Ashraf's Driving School has been serving the local community for many years. Our mission is to provide high-quality driving instruction that is both informative and enjoyable. We are committed to helping each student achieve their driving goals and pass their driving test with confidence.</p>
-
-    <h3>Meet Ashraf</h3>
-    <p>Ashraf is a fully qualified and highly experienced driving instructor with a passion for teaching. Having helped hundreds of students pass their driving tests, Ashraf combines a thorough understanding of driving principles with a friendly and supportive teaching style.</p>
-
-    <h3>Our Approach</h3>
-    <p>We believe in a personalised approach to driving instruction. Each lesson is tailored to your individual needs and learning pace. We use modern teaching techniques and practical exercises to ensure you gain the skills and confidence needed to drive safely and pass your driving test.</p>
-
-    <h3>Our Vehicles</h3>
-    <p>Our fleet includes a range of modern, well-maintained vehicles equipped with dual controls for your safety. Whether you prefer a manual or automatic transmission, we have the right vehicle to suit your needs.</p>
-
-
-<h3>Our Location</h3>
-    <p>We are based in St Albans &amp; Hatfield, two beautiful towns in Hertfordshire. Check out our locations on the map below!</p>
-
-    <!-- Interactive Map -->
-    <div id="map" style="height: 400px; width: 100%; margin-top: 20px;"></div>
-
-<!-- Leaflet.js Script -->
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-
-</section>
-
-        
-        <section id="contact" class="section">
-            <h2>Contact</h2>
-            <div class="contact-info-card">
-                <h3>Phone</h3>
-                <p>For automatic lessons: 07958 316700</p>
-                <p>For manual lessons: 07534 639826</p>
-            </div>
-            <div class="contact-info-card">
-                <h3>Email</h3>
-                <p>mr.rumon@hotmail.co.uk</p>
-            </div>
-            <div class="contact-info-card">
-                <h3>Instagram</h3>
-                <p>Follow us on Instagram: <a href="https://www.instagram.com/ashraf.driving.school/profilecard/?igsh=YWJ1YWxraXlxYTlp" target="_blank" style="color: #ff0000; 
-            text-decoration: underline; font-weight: bold;">@ashraf.driving.school</a></p>
-                <p></p>
+                <!-- Dots Navigation -->
+                <div class="dots-container">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
             </div>
         </section>
-
     </main>
-
-    <script>
-    const prevButton = document.querySelector('.prev');
-    const nextButton = document.querySelector('.next');
-    const carousel = document.querySelector('.carousel');
-    const dots = document.querySelectorAll('.dot');
-    let currentIndex = 0;
-
-    const updateCarousel = () => {
-        // Update the carousel position
-        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-        // Update active dot
-        dots.forEach((dot, index) => {
-            dot.classList.remove('active');
-            if (index === currentIndex) {
-                dot.classList.add('active');
-            }
-        });
-    };
-
-    // Next slide
-    nextButton.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % dots.length; // Loop back to the first slide
-        updateCarousel();
-    });
-
-    // Previous slide
-    prevButton.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + dots.length) % dots.length; // Loop to the last slide
-        updateCarousel();
-    });
-
-    // Dots click navigation
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            currentIndex = index;
-            updateCarousel();
-        });
-    });
-
-    // Initialize carousel
-    updateCarousel();
-</script>
 
 </body>
 </html>
