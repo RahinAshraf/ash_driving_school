@@ -3,156 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashraf Driving School</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Page Inside a Card</title>
     <style>
-        .card {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 1200px;
-            margin: 20px auto;
-            overflow: hidden;
-        }
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
-        .container {
-            position: relative; /* Set container to relative so we can position the link inside it */
-            max-width: 400px;
-            margin: auto;
-            padding: 20px;
+        .card {
             background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 90%;
+            overflow: auto;
+            max-height: 90vh;
+        }
+        header, main, footer {
+            margin-bottom: 20px;
+        }
+        header {
+            text-align: center;
+        }
+        .contact-info-card {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin: 10px 0;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        .top-bar {
-            background-color: #FF0000;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            z-index: 1000;
-        }
-        .contact-header {
-            padding: 0.5em 0;
-            text-align: center;
-            font-size: 1.2em; /* Keep original size */
-            font-weight: bold;
-        }
         nav {
-            background-color: #FF0000;
-            display: flex;
-            justify-content: center; /* Center contents in the navbar */
-            align-items: center;
-            padding: 0.5em 0;
-            white-space: nowrap; /* Prevent wrapping of the items */
-            overflow-x: auto; /* Allow horizontal scrolling if items exceed width */
+            text-align: center;
+            margin-bottom: 20px;
         }
         nav a {
-            color: white;
+            color: #FF0000;
             text-decoration: none;
             font-weight: bold;
-            padding: 0 0.5em; /* Reduced padding */
-            display: inline-block; /* Ensure consistent height */
-            font-size: 0.75em; /* Reduce size by 50% (originally assumed to be 1em) */
-        }
-        .nav-button {
-            padding: 5px 10px; /* Reduced padding */
-            background-color: #C8102E;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-left: 10px; /* Space between button and link */
-            transition: background-color 0.3s ease;
-            display: inline-block; /* Ensure consistent height */
-            font-size: 0.75em; /* Reduce size by 50% */
-        }
-        .nav-button:hover {
-            background-color: #A80F2D;
-        }
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: white;
-            min-width: 160px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        .main-header {
-            margin-top: 100px; /* Space for the fixed header */
-            text-align: center;
-            color: #333;
-            padding-left: 35px; /* Add left padding */
-        }
-        .main-header h1 {
-            font-size: 2.5em;
-            margin: 0.5em 0;
-        }
-        .main-header p {
-            font-size: 1.2em;
-            color: #666;
-        }
-        #content {
-            padding-left: 40px; /* Add left padding to the main content */
+            margin: 0 10px;
         }
         .section {
-            padding: 40px 20px;
-            margin: 20px auto;
-            max-width: 800px;
-            background: white;
+            padding: 10px;
+            border: 1px solid #e0e0e0;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            position: relative; /* Needed for the pseudo-element */
+            margin-bottom: 20px;
         }
-        .section h2 {
-            color: #FF0000;
-            border-bottom: 2px solid #C8102E;
-            padding-bottom: 10px;
-            margin-top: 0; /* Remove default margin */
+        blockquote {
+            margin: 10px 0;
+            padding-left: 20px;
+            border-left: 4px solid #ff0000;
+            color: #555;
         }
-        .section ul {
-            list-style-type: square;
-            margin-left: 20px;
+        blockquote span {
+            font-weight: bold;
         }
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: #FF0000;
-            color: white;
-            position: relative;
-            bottom: 0;
+            color: #666;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        #map {
+            height: 300px;
             width: 100%;
             margin-top: 20px;
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('nav a');
+            const card = document.querySelector('.card');
+
+            links.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection) {
+                        event.preventDefault();
+                        card.scrollTop = targetSection.offsetTop - card.offsetTop;
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="card">
-        <header class="top-bar">
+        <header>
             <div class="contact-header">
                 <span>ENQUIRIES & BOOKINGS: 07958 316700</span>
             </div>
@@ -160,30 +108,41 @@
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
-                <a href="{% url 'reviews' %}">Reviews</a>
-                {% if user.is_authenticated %}
-                    <button class="nav-button" onclick="location.href='{% url 'profile' %}'">My profile</button>
-                    <button class="nav-button" onclick="location.href='{% url 'logout' %}'">Logout</button>
-                {% else %}
-                    <button class="nav-button" onclick="location.href='{% url 'signup' %}'">Sign Up</button>
-                    <button class="nav-button" onclick="location.href='{% url 'login' %}'">Login</button>
-                {% endif %}
+                <a href="#reviews">Reviews</a>
             </nav>
-        </header>
-        
-        <header class="main-header">
             <h1>Welcome to Ashraf Driving School</h1>
             <p>Your journey to becoming a confident driver starts here!</p>
-        </header> 
-        
-        <main id="content">
-            <!-- Original Contents Begin -->
-            <!-- Place the original content of sections like home, about, contact, reviews here -->
-            <!-- Original Contents End -->
+        </header>
+        <main>
+            <section id="home" class="section">
+                <h2>Home</h2>
+                <p>Welcome to Ashraf Driving School, where we offer top-notch driving lessons tailored to your needs. Whether you're a beginner or looking to brush up on your skills, we're here to help you become a confident and skilled driver.</p>
+                <h3>Why Choose Us?</h3>
+                <ul>
+                    <li><b>Experienced Instructor:</b> Ashraf is an approved driving instructor with many years of experience.</li>
+                    <li><b>Flexible Scheduling:</b> We offer lessons at times that suit you, including evenings and weekends.</li>
+                    <li><b>Affordable Rates:</b> Competitive pricing with no hidden fees.</li>
+                    <li><b>Modern Vehicles:</b> Learn to drive in well-maintained, comfortable vehicles.</li>
+                </ul>
+            </section>
+            <section id="about" class="section">
+                <h2>About</h2>
+                <p>Ashraf's Driving School has been serving the local community for many years. Our mission is to provide high-quality driving instruction that is both informative and enjoyable. We are committed to helping each student achieve their driving goals and pass their driving test with confidence.</p>
+            </section>
+            <section id="contact" class="section">
+                <h2>Contact</h2>
+                <div class="contact-info-card">
+                    <h3>Phone</h3>
+                    <ul>
+                        <li>07958 316700</li>
+                        <li>07534 639826</li>
+                    </ul>
+                </div>
+                <div id="map"></div>
+            </section>
         </main>
-        
         <footer>
-            <p>Developed by: <a href="https://www.linkedin.com/in/rahin-ashraf-130945224" target="_blank" style="color: #ffd700; text-decoration: underline; font-weight: bold;">@Rahin Ashraf</a></p>
+            <p>Developed by Rahin Ashraf</p>
         </footer>
     </div>
 </body>
