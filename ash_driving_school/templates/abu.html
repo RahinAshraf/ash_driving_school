@@ -429,14 +429,17 @@
                               We are based in St Albans &amp; Hatfield, two beautiful towns in Hertfordshire. 
                               Check out our locations on the map below!
                             </span>
+                        </li> 
 
+                        <li class="card">
                             <!-- Interactive Map -->
-                            <div id="map" style="height: 40px; width: 100%; margin-top: 20px;"></div>
+                            <div id="map" style="height: 100%; width: 100%; margin-top: 20px;"></div>
 
                             <!-- Leaflet.js Script -->
                             <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
                             <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
-                        </li>   
+                        </li>
+
                     </ul>
                 <i id="right" class="fa-solid fas fa-angle-right"></i>
             </div>
@@ -546,6 +549,31 @@
 
 
 <script>
+
+document.addEventListener('DOMContentLoaded', function () {
+                // Initialize the map without attribution control
+    const map = L.map('map', {
+        attributionControl: false // Disable the attribution control
+    }).setView([51.7565, -0.2815], 11); // St Albans coordinates with zoom level
+
+    // Add OpenStreetMap tiles without attribution
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        // No attribution settings here
+    }).addTo(map);
+
+    // Add a marker at St Albans
+    const markerStAlbans = L.marker([51.750, -0.340]).addTo(map)
+        .bindPopup("<b>We are based in St Albans</b>")
+
+    // Add a marker at Hatfield
+    const markerHatfield = L.marker([51.761, -0.223]).addTo(map)
+        .bindPopup("<b>We are based in Hatfield</b>")
+        }
+    );
+
+    
+
+
 document.addEventListener("DOMContentLoaded", function() {
     const carousel = document.querySelector(".carousel");
     const arrowBtns = document.querySelectorAll(".wrapper i");
