@@ -90,6 +90,34 @@
             }
         }
 
+        @media (max-width: 600px) {
+            .buttons-container {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        }
+
+        /* For larger screens (tablets, laptops, desktops) */
+        @media (min-width: 768px) {
+            .buttons-container {
+                position: absolute;
+                top: 50%;
+                left: 20px;
+                transform: translateY(-50%);
+                z-index: 10;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                padding-left: 50px;  /* Add padding to the left of the container */
+            }
+        }
+
         .carousel-container {
             margin: 0;
             padding: 0;
