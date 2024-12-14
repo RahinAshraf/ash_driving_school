@@ -347,7 +347,7 @@
     margin: 0 0 10px;
     line-height: 1.6;
     color: black; /* Ensure text is black for readability */
-    font-weight: bold;
+    
 }
 
 .contact-info-tile a.contact-link {
@@ -373,6 +373,13 @@
         margin: 0 10px; /* Spacing between tiles */
     }
 }
+
+
+.contact-detail {
+    color: black; /* Ensure text is black */
+    font-weight: bold; /* Make the text bold */
+}
+
 
 
     </style>
@@ -531,25 +538,26 @@
 
         <section id="contact" class="section">
             <h2>Contact</h2>
-            <div class="contact-card">
-                <div class="contact-info-tile">
-                    <h3>Phone</h3>
-                    <p>For automatic lessons: 07958 316700</p>
-                    <p>For manual lessons: 07534 639826</p>
+                <div class="contact-card">
+                    <div class="contact-info-tile">
+                        <h3>Phone</h3>
+                        <p>For automatic lessons: <span class="contact-detail">07958 316700</span></p>
+                        <p>For manual lessons: <span class="contact-detail">07534 639826</span></p>
+                    </div>
+                    <div class="contact-info-tile">
+                        <h3>Email</h3>
+                        <p><span class="contact-detail">mr.rumon@hotmail.co.uk</span></p>
+                    </div>
+                    <div class="contact-info-tile">
+                        <h3>Instagram</h3>
+                        <p>Follow us on Instagram: 
+                            <a href="https://www.instagram.com/ashraf.driving.school/profilecard/?igsh=YWJ1YWxraXlxYTlp" 
+                            target="_blank" class="contact-link">@ashraf.driving.school</a>
+                        </p>
+                    </div>
                 </div>
-                <div class="contact-info-tile">
-                    <h3>Email</h3>
-                    <p>mr.rumon@hotmail.co.uk</p>
-                </div>
-                <div class="contact-info-tile">
-                    <h3>Instagram</h3>
-                    <p>Follow us on Instagram: 
-                        <a href="https://www.instagram.com/ashraf.driving.school/profilecard/?igsh=YWJ1YWxraXlxYTlp" 
-                        target="_blank" class="contact-link">@ashraf.driving.school</a>
-                    </p>
-                </div>
-            </div>
         </section>
+
 
 
 
