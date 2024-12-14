@@ -300,6 +300,78 @@
             margin-top: 20px;
         }
 
+
+
+        /* Contact Section Styling */
+#contact {
+    padding: 60px 20px;
+    background-color: #f8f9fa; /* Light background for contrast */
+    color: #333; /* Text color */
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+#contact h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #007bff; /* Accent color for the heading */
+}
+
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Spacing between tiles */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.contact-info-tile {
+    background: #fff;
+    border: 1px solid #ddd; /* Subtle border for separation */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    text-align: left; /* Align content inside each tile */
+}
+
+.contact-info-tile h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #007bff; /* Accent color for headings */
+}
+
+.contact-info-tile p {
+    margin: 0 0 10px;
+    line-height: 1.6;
+}
+
+.contact-info-tile a.contact-link {
+    color: #007bff; /* Link color */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-info-tile a.contact-link:hover {
+    text-decoration: underline; /* Subtle hover effect */
+}
+
+/* Responsive Layout */
+@media (min-width: 768px) {
+    .contact-card {
+        flex-direction: row; /* Align tiles horizontally */
+        justify-content: space-between;
+    }
+
+    .contact-info-tile {
+        flex: 1; /* Make each tile equal in width */
+        margin: 0 10px; /* Spacing between tiles */
+    }
+}
+
+
     </style>
 
     <script>
