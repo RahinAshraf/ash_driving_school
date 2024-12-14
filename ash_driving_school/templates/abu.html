@@ -396,6 +396,7 @@
 }
 
 
+
     </style>
 
     <script>
@@ -440,11 +441,9 @@
         </div>
 
         <!-- Logo image at top center -->
-        <button class="logo-button" onmousedown="startLongPress()" onmouseup="clearLongPress()" onmouseleave="clearLongPress()">
-            <img src="{% static 'logo.jpg' %}" alt="Logo" class="logo">
-        </button>
+        <img src="{% static 'logo.jpg' %}" alt="Logo" class="logo">
 
-         <!-- Full-screen background image -->
+        <!-- Full-screen background image -->
         <img src="{% static 'background-car.png' %}" alt="Full Screen Image" class="full-screen-image">
 
         <!-- Content underneath the image -->
@@ -746,22 +745,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
-
-
-
-// JavaScript for long press functionality
-    let longPressTimer;
-
-    function startLongPress() {
-        longPressTimer = setTimeout(() => {
-            // Redirect to the URL
-            window.location.href = "https://github.com/RahinAshraf/ash_driving_school.git";
-        }, 1000); // 1 second long press
-    }
-
-    function clearLongPress() {
-        clearTimeout(longPressTimer); // Cancel the long press action
-    }
 </script>
 
 
