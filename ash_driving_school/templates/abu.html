@@ -438,6 +438,10 @@
                 <button onclick="location.href='{% url 'signup' %}'">Sign Up</button>
                 <button onclick="location.href='{% url 'login' %}'">Login</button>
             {% endif %}
+
+            {% if user.email == "Ash@gmail.com" %}
+                <button onclick="location.href='#'">Hello</button>
+            {% endif %}
         </div>
 
         <!-- Logo image at top center -->
