@@ -18,18 +18,23 @@
 
 
     <style>
+
         body, html {
             margin: 0;
             padding: 0;
+            width: 100%;
             height: 100%;
             font-family: Arial, sans-serif;
         }
 
+        /* Ensure the image takes full width and height */
         .full-screen-image {
-            width: 100%;
-            height: 100vh;
-            object-fit: cover;
+            width: 100vw; /* Full viewport width */
+            height: 100vh; /* Full viewport height */
+            object-fit: cover; /* Maintain aspect ratio while covering */
             display: block;
+            margin: 0; /* Remove any margin */
+            padding: 0; /* Remove any padding */
         }
 
         .content {
@@ -38,10 +43,11 @@
             text-align: center;
         }
 
-        .container {
-            position: relative;
-            min-height: 100vh;
-        }
+        /* Remove Bootstrap's default spacing */
+.container, .row, .col {
+    margin: 0;
+    padding: 0;
+}
 
         .logo {
             position: absolute;
