@@ -127,26 +127,26 @@
             overflow: hidden;
         }
 
+        /* Carousel list */
         .carousel {
-            padding: 0;
             display: flex;
             transition: transform 0.5s ease-in-out;
-            width: 100%;
-            grid-auto-columns: 100%; /* Adjust to 100% for full width */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            overflow: hidden; /* Prevent extra items from showing */
         }
 
-        /* Card adjustments */
+        /* Carousel cards */
         .card {
-            position: relative;
-            width: 100%; /* Ensure cards fit within carousel width */
+            flex: 0 0 100%; /* Each card takes 100% of the wrapper's width */
+            box-sizing: border-box; /* Ensure padding is included in width */
+            padding: 20px;
+            text-align: center;
             background-color: #FFFF00;
             border: 1px solid #ddd;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
         }
 
         .carousel img {
@@ -804,26 +804,35 @@ document.addEventListener("DOMContentLoaded", () => {
     const leftArrow = document.querySelector(".left-arrow");
     const rightArrow = document.querySelector(".right-arrow");
 
-    let currentIndex = 0;
+    let currentIndex = 0; // Start at the first card
+    const totalCards = cards.length;
 
-    // Function to update the carousel's visible card
+    // Function to update the carousel's position
     const updateCarousel = () => {
-        const totalCards = cards.length;
-        const offset = -(currentIndex * 100); // Assuming each card is 100% width
-        carousel.style.transform = `translateX(${offset}%)`;
+        const cardWidth = carousel.clientWidth; // Get the visible card width dynamically
+        const offset = -currentIndex * cardWidth; // Calculate offset for transform
+        carousel.style.transform = `translateX(${offset}px)`;
     };
 
-    // Event listeners for navigation arrows
+    // Left arrow click event
     leftArrow.addEventListener("click", () => {
-        currentIndex = (currentIndex === 0) ? cards.length - 1 : currentIndex - 1;
+        currentIndex = (currentIndex - 1 + totalCards) % totalCards; // Loop back to last card
         updateCarousel();
     });
 
+    // Right arrow click event
     rightArrow.addEventListener("click", () => {
-        currentIndex = (currentIndex === cards.length - 1) ? 0 : currentIndex + 1;
+        currentIndex = (currentIndex + 1) % totalCards; // Loop back to first card
         updateCarousel();
     });
+
+    // Update carousel on window resize to maintain correct alignment
+    window.addEventListener("resize", updateCarousel);
+
+    // Initialize the carousel position
+    updateCarousel();
 });
+
 
 </script>
 
