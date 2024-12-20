@@ -553,7 +553,6 @@ li {
 
             {% if user.is_authenticated %}
                 <button onclick="location.href='{% url 'profile' %}'">My Profile</button>
-                <button onclick="location.href='{% url 'logout' %}'">Logout</button>
             {% else %}
                 <button onclick="location.href='{% url 'signup' %}'">Sign Up</button>
                 <button onclick="location.href='{% url 'login' %}'">Login</button>
