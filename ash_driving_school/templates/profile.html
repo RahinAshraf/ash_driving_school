@@ -37,10 +37,10 @@
             color: #cc8400; /* Darker orange for hover effect */
         }
 
-        h2 {
+        h1 {
             color: black;
             font-family: 'Courier New', Courier, monospace;
-            margin-top: 60px; /* Increased spacing for alignment */
+            margin-top: 35px; /* Increased spacing for alignment */
         }
 
         p {
@@ -76,7 +76,7 @@
         <!-- Back to Home link -->
         <a href="{% url 'abu' %}" class="back-link">Back to Home</a>
 
-        <h2>My Profile</h2>
+        <h1>My Profile</h1>
 
         <p><strong>Username:</strong> {{ user.username }}</p>
         <p><strong>Email:</strong> {{ user.email }}</p>
