@@ -26,20 +26,16 @@
         }
         h2 {
             text-align: center;
-            color: black;
+            color: #FF0000;
         }
-        .review-container {
-            position: relative;
-            margin-bottom: 20px;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border: 2px solid black; /* Added black border */
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        .review {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
         .review h4 {
             margin: 0;
-            color: black; /* Changed to black */
         }
         .review p {
             margin: 5px 0;
@@ -48,7 +44,7 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            color: grey; /* Changed to grey */
+            color: #FF0000;
             text-decoration: none;
             font-weight: bold;
         }
@@ -59,12 +55,20 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            color: grey; /* Changed to grey */
+            color: #FF0000;
             text-decoration: none;
             font-weight: bold;
         }
         .leave-review:hover {
             text-decoration: underline;
+        }
+        .review-container {
+            position: relative;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         .delete-button-form {
             position: absolute;
@@ -81,15 +85,6 @@
         }
         .delete-button:hover {
             background-color: #cc0000;
-        }
-        .username-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .username-container i {
-            margin-right: 5px;
-            color: #666;
         }
     </style>
 </head>
@@ -113,9 +108,9 @@
                     </form>
                 {% endif %}
 
-                <div class="username-container">
-                    <i class="fas fa-user"></i>
-                    <h4>{{ review.user }}</h4>
+                <div class="username-container" style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <i class="fas fa-user" style="margin-right: 5px; color: #666;"></i>
+                    <h4 style="margin: 0;">{{ review.user }}</h4>
                 </div>
 
                 <p style="margin-bottom: 10px;"><strong>Rating:</strong>
@@ -132,6 +127,9 @@
                 <p><strong>Comment:</strong></p>
                 <p style="white-space: pre-wrap; margin-top: 5px;">{{ review.comment|linebreaksbr }}</p>
 
+                {% comment %} <span style="position: absolute; bottom: 10px; right: 10px; font-size: 15px; color: #888;">
+                    {{ review.created_at|date:"j F Y" }}
+                </span> {% endcomment %}
             </div>
         {% empty %}
             <p>No reviews yet.</p>
