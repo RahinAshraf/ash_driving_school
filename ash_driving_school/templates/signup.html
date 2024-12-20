@@ -96,6 +96,11 @@
             background-color: #C8102E;
         }
         
+        h1 {
+            text-align: center; /* Center-align header */
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+        }
     </style>
 </head>
 <body>
@@ -103,7 +108,7 @@
         <!-- Back to Home link inside the container -->
         <a href="{% url 'abu' %}" class="back-link">Back to Home</a>
 
-        <h2>Sign Up</h2>
+        <h1>Sign Up</h1>
 
         <!-- Display error messages only if the form submission has errors -->
         {% if form.errors %}
