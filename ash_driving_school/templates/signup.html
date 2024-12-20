@@ -22,26 +22,25 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        /* Link positioning at top left inside the form container */
+        /* Back to Home link styling */
         .back-link {
             position: absolute;
-            top: 0; /* Positioned at the top of the container */
-            left: 0; /* Positioned at the left of the container */
-            color: #FF0000;
+            top: 20px; /* Adjusted positioning for spacing */
+            left: 20px;
+            color: orange; /* Changed to orange */
             text-decoration: none;
             font-weight: bold;
-            margin-top: 10px; /* Add some space from the top */
-            margin-left: 10px; /* Add some space from the left */
         }
 
         .back-link:hover {
-            color: #C8102E;
+            color: #cc8400; /* Darker orange for hover effect */
         }
 
-        h2 {
-            text-align: center;
-            color: #FF0000;
-            margin-top: 30px; /* To give space for the back-link */
+        h1 {
+            text-align: center; /* Center-align header */
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 60px; /* Increased margin-top to create space below the link */
         }
 
         form {
@@ -62,16 +61,17 @@
 
         button {
             padding: 12px;
-            background-color: #FF0000;
+            background-color: orange; /* Changed to orange */
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 18px; /* Increased font size */
+            margin-top: 15px; /* Added gap between input fields and buttons */
         }
 
         button:hover {
-            background-color: #C8102E;
+            background-color: #cc8400; /* Darker orange for hover */
         }
 
         .error {
@@ -82,31 +82,24 @@
         .login-link {
             display: inline-block;
             padding: 12px;
-            background-color: #FF0000;
+            background-color: orange; /* Changed to orange */
             color: white;
             text-decoration: none;
             border-radius: 4px;
             text-align: center;
             width: 100%;
             box-sizing: border-box;
-            margin-top: 15px;
+            margin-top: 15px; /* Added spacing between buttons */
         }
 
         .login-link:hover {
-            background-color: #C8102E;
-        }
-        
-       h1 {
-            text-align: center; /* Center-align header */
-            color: black;
-            font-family: 'Courier New', Courier, monospace;
-            margin-top: 35px; /* Increased margin-top to create space below the link */
+            background-color: #cc8400; /* Darker orange for hover */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Back to Home link inside the container -->
+        <!-- Back to Home link -->
         <a href="{% url 'abu' %}" class="back-link">Back to Home</a>
 
         <h1>Sign Up</h1>
@@ -137,7 +130,7 @@
             <button type="submit">Sign Up</button>
         </form>
 
-        <!-- "Already have an account" link with added spacing -->
+        <!-- "Already have an account" link styled as a button -->
         <a href="{% url 'login' %}" class="login-link">Already have an account? Login here.</a>
     </div>
 </body>
