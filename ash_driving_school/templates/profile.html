@@ -23,23 +23,24 @@
             text-align: center;
         }
 
-        /* Back to Home link styling inside the container */
+        /* Back to Home link styling */
         .back-link {
             position: absolute;
-            top: 10px; /* Position it 10px from the top of the container */
-            left: 10px; /* Position it 10px from the left of the container */
-            color: #FF0000;
+            top: 20px; /* Adjusted positioning for better spacing */
+            left: 20px;
+            color: orange; /* Changed to orange */
             font-weight: bold;
             text-decoration: none;
         }
 
         .back-link:hover {
-            color: #C8102E;
+            color: #cc8400; /* Darker orange for hover effect */
         }
 
         h2 {
-            color: #FF0000;
-            margin-top: 40px; /* Add space below the back-link */
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 60px; /* Increased spacing for alignment */
         }
 
         p {
@@ -49,12 +50,12 @@
         }
 
         strong {
-            color: #FF0000;
+            color: orange; /* Changed strong element color to orange */
         }
 
         button {
             padding: 12px;
-            background-color: #FF0000;
+            background-color: orange; /* Changed to orange */
             color: white;
             border: none;
             border-radius: 4px;
@@ -65,14 +66,14 @@
         }
 
         button:hover {
-            background-color: #C8102E;
+            background-color: #cc8400; /* Darker orange for hover */
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Back to Home link inside the container -->
+        <!-- Back to Home link -->
         <a href="{% url 'abu' %}" class="back-link">Back to Home</a>
 
         <h2>My Profile</h2>
