@@ -149,6 +149,12 @@
         .back-link:hover {
             text-decoration: underline;
         }
+
+        h1 {
+            text-align: center; /* Center-align header */
+            color: black;
+            font-family: 'Courier New', Courier, monospace;
+        }
     </style>
 </head>
 <body>
@@ -158,7 +164,7 @@
             Back to Reviews
         </a>
 
-        <h2>Leave a Review</h2>
+        <h1>Leave a Review</h1>
         <form method="POST" action="{% url 'submit_review' %}">
             {% csrf_token %}
             
