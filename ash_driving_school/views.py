@@ -193,23 +193,6 @@ def reviews_view(request):
     return render(request, 'reviews.html', {'reviews': combined_reviews})
 
 
-
-# # Signup view
-# def signup_view(request):
-#     if request.method == 'POST':
-#         username = request.POST.get('username')
-#         email = request.POST.get('email')
-#         password = request.POST.get('password')
-
-#         if User.objects.filter(username=username).exists():
-#             messages.error(request, "Username already exists.")
-#         else:
-#             user = User.objects.create_user(username=username, email=email, password=password)
-#             return redirect('login')  # Redirect to the login page after successful signup
-
-#     return render(request, 'signup.html')
-
-
 def signup_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
