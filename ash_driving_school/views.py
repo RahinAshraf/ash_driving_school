@@ -194,7 +194,22 @@ def reviews_view(request):
 
 
 
-# Signup view
+# # Signup view
+# def signup_view(request):
+#     if request.method == 'POST':
+#         username = request.POST.get('username')
+#         email = request.POST.get('email')
+#         password = request.POST.get('password')
+
+#         if User.objects.filter(username=username).exists():
+#             messages.error(request, "Username already exists.")
+#         else:
+#             user = User.objects.create_user(username=username, email=email, password=password)
+#             return redirect('login')  # Redirect to the login page after successful signup
+
+#     return render(request, 'signup.html')
+
+
 def signup_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -204,10 +219,18 @@ def signup_view(request):
         if User.objects.filter(username=username).exists():
             messages.error(request, "Username already exists.")
         else:
+            # Create the new user
             user = User.objects.create_user(username=username, email=email, password=password)
-            return redirect('login')  # Redirect to the login page after successful signup
+            
+            # Authenticate and log the user in
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, "You have signed up and logged in successfully!")
+                return redirect('abu')  # Redirect to the desired page after signup and login
 
     return render(request, 'signup.html')
+
 
 
 def login_view(request):
