@@ -30,8 +30,6 @@ urlpatterns = [
     path('submit_review/', submit_review, name='submit_review'),  # Submit review
     path('profile/', profile_view, name='profile'),
     path('reviews/delete/<int:review_id>/', delete_review, name='delete_review'),
-
-
 ]
 
 
