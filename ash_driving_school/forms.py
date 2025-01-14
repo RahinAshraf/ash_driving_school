@@ -10,6 +10,9 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ['rating', 'comment']
+
+
+        
     
     # Custom validation for the rating field
     def clean_rating(self):
